@@ -1,6 +1,6 @@
 {
   "navigation": {
-    "selectedUserPageObject": "[AHU_ui_demo.eez-project]:/userPages/1",
+    "selectedUserPageObject": "[AHU_ui_demo.eez-project]:/userPages/2",
     "subnavigationSelectedItems": {}
   },
   "layoutModel": {
@@ -124,13 +124,12 @@
             {
               "type": "row",
               "id": "#866f73ea-f23a-402b-8422-fe6616febbaf",
-              "weight": 21.252433636831793,
+              "weight": 32.94087809002281,
               "children": [
                 {
                   "type": "tabset",
                   "id": "#87d529fa-9b29-4a24-8318-1a0a2fb99182",
                   "weight": 1.874251497005988,
-                  "selected": 2,
                   "enableClose": false,
                   "children": [
                     {
@@ -197,17 +196,17 @@
             {
               "type": "tabset",
               "id": "EDITORS",
-              "weight": 42.85592399193399,
+              "weight": 31.16747953874298,
               "enableDeleteWhenEmpty": false,
               "enableClose": false,
               "children": [
                 {
                   "type": "tab",
                   "id": "#bcd03806-59e1-423e-82eb-bf43f7e02ea3",
-                  "name": "SettingsPage",
+                  "name": "CalibrationPage",
                   "component": "editor",
                   "config": {
-                    "objectPath": "[AHU_ui_demo.eez-project]:/userPages/1",
+                    "objectPath": "[AHU_ui_demo.eez-project]:/userPages/2",
                     "permanent": false
                   },
                   "icon": "svg:page"
@@ -1152,7 +1151,7 @@
           "x": -136,
           "y": -240
         },
-        "scale": 0.8
+        "scale": 1
       },
       "timeline": {
         "isEditorActive": false,

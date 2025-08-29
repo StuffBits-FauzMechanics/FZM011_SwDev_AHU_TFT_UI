@@ -108,12 +108,11 @@
     "objID": "c6c71e16-53e1-217f-d03b-cef56c6b037a",
     "globalVariables": [
       {
-        "objID": "d17ba4c4-c8de-4395-c207-9584eb706e81",
-        "name": "editParamNameTxt",
+        "objID": "006c7ec4-d80f-445d-b5b2-914e5f06f700",
+        "name": "title",
         "type": "string",
-        "defaultValue": "\"\"",
-        "persistent": false,
-        "native": false
+        "defaultValue": "\"Title\"",
+        "persistent": false
       }
     ],
     "structures": [],
@@ -146,70 +145,8 @@
     },
     {
       "objID": "90609d02-532f-489e-b9b8-2ff892c94f08",
-      "components": [
-        {
-          "objID": "723ec0fc-cdaf-4296-bd95-235ef0b4a165",
-          "type": "StartActionComponent",
-          "left": -318,
-          "top": -389,
-          "width": 87,
-          "height": 24,
-          "customInputs": [],
-          "customOutputs": []
-        },
-        {
-          "objID": "f110b5ac-f4eb-4764-edeb-66e140a8f66f",
-          "type": "LVGLActionComponent",
-          "left": -146,
-          "top": -389,
-          "width": 336,
-          "height": 54,
-          "customInputs": [],
-          "customOutputs": [],
-          "actions": [
-            {
-              "objID": "3f5c1cf8-2f5a-4bd2-a891-1bce7339cdd9",
-              "action": "changeScreen",
-              "screen": "EditParaPage",
-              "screenType": "literal",
-              "fadeMode": "FADE_IN",
-              "fadeModeType": "literal",
-              "speed": 200,
-              "speedType": "literal",
-              "delay": 0,
-              "delayType": "literal",
-              "useStack": true,
-              "useStackType": "literal"
-            }
-          ]
-        },
-        {
-          "objID": "54e9bc8e-a6e0-4565-e5d5-f1e3bd4ab72e",
-          "type": "EndActionComponent",
-          "left": 258,
-          "top": -389,
-          "width": 87,
-          "height": 24,
-          "customInputs": [],
-          "customOutputs": []
-        }
-      ],
-      "connectionLines": [
-        {
-          "objID": "30352301-2772-46d9-fc38-b8dda32d85c5",
-          "source": "723ec0fc-cdaf-4296-bd95-235ef0b4a165",
-          "output": "@seqout",
-          "target": "f110b5ac-f4eb-4764-edeb-66e140a8f66f",
-          "input": "@seqin"
-        },
-        {
-          "objID": "94c00c9f-ea26-4eb9-f273-95f9ea7af436",
-          "source": "f110b5ac-f4eb-4764-edeb-66e140a8f66f",
-          "output": "@seqout",
-          "target": "54e9bc8e-a6e0-4565-e5d5-f1e3bd4ab72e",
-          "input": "@seqin"
-        }
-      ],
+      "components": [],
+      "connectionLines": [],
       "localVariables": [],
       "userProperties": [],
       "name": "openeditParapage"
@@ -334,7 +271,7 @@
           "type": "LVGLActionComponent",
           "left": -238,
           "top": -220,
-          "width": 354,
+          "width": 317,
           "height": 54,
           "customInputs": [],
           "customOutputs": [],
@@ -344,7 +281,7 @@
               "action": "changeScreen",
               "screen": "SettingsPage",
               "screenType": "literal",
-              "fadeMode": "MOVE_RIGHT",
+              "fadeMode": "NONE",
               "fadeModeType": "literal",
               "speed": 200,
               "speedType": "literal",
@@ -555,7 +492,7 @@
               "left": 0,
               "top": 0,
               "width": 272,
-              "height": 26,
+              "height": 30,
               "customInputs": [],
               "customOutputs": [],
               "style": {
@@ -701,11 +638,12 @@
                     "DEFAULT": {
                       "bg_color": "#2196f3",
                       "align": "TOP_LEFT",
-                      "radius": 0,
+                      "radius": 5,
                       "pad_top": 0,
                       "pad_bottom": 0,
                       "pad_left": 5,
-                      "pad_right": 5
+                      "pad_right": 5,
+                      "clip_corner": true
                     }
                   }
                 }
@@ -1245,7 +1183,9 @@
               "userWidgetPageName": "keypad",
               "userPropertyValues": {
                 "objID": "f64097cb-f255-4bfa-992a-3ebf04da857f",
-                "values": {}
+                "values": {
+                  "84ad1df4-09bb-4c4d-d9d9-2513738cf2b4": "title"
+                }
               }
             }
           ],
@@ -1408,7 +1348,16 @@
         }
       ],
       "connectionLines": [],
-      "localVariables": [],
+      "localVariables": [
+        {
+          "objID": "bb07a71e-e5fc-4935-a79b-8d271edd455f",
+          "name": "varEditParaName",
+          "type": "string",
+          "defaultValue": "\"Alarm Low\"",
+          "persistent": false,
+          "native": false
+        }
+      ],
       "userProperties": [],
       "name": "PressurePage",
       "left": 0,
@@ -1515,7 +1464,7 @@
                 {
                   "objID": "8e206288-1b92-448b-eb25-efc672ae75cf",
                   "eventName": "PRESSED",
-                  "handlerType": "action",
+                  "handlerType": "flow",
                   "action": "switchToPressureSettings",
                   "userData": 1
                 }
@@ -2103,6 +2052,32 @@
             "objID": "40e13ad1-7bb2-4da8-d871-1a5393ba0ec4",
             "values": {}
           }
+        },
+        {
+          "objID": "b155d307-f1da-4a96-8461-d76d6cf5e333",
+          "type": "LVGLActionComponent",
+          "left": 302,
+          "top": 74,
+          "width": 317,
+          "height": 54,
+          "customInputs": [],
+          "customOutputs": [],
+          "actions": [
+            {
+              "objID": "184b6add-e051-4c60-86b5-6d0f2b655172",
+              "action": "changeScreen",
+              "screen": "PressurePage",
+              "screenType": "literal",
+              "fadeMode": "NONE",
+              "fadeModeType": "literal",
+              "speed": 200,
+              "speedType": "literal",
+              "delay": 0,
+              "delayType": "literal",
+              "useStack": true,
+              "useStackType": "literal"
+            }
+          ]
         }
       ],
       "connectionLines": [
@@ -2118,6 +2093,13 @@
           "source": "420d3ad3-8940-4a44-c823-12b2c5ed9d6a",
           "output": "PRESSED",
           "target": "bbf09b51-5774-49ec-f0b5-62646c930f4e",
+          "input": "@seqin"
+        },
+        {
+          "objID": "599c9076-5f25-40ac-883b-a77d51af44d9",
+          "source": "9737d107-78ed-475c-8d8e-98e4f44b6a29",
+          "output": "PRESSED",
+          "target": "b155d307-f1da-4a96-8461-d76d6cf5e333",
           "input": "@seqin"
         }
       ],
@@ -2708,7 +2690,7 @@
                 {
                   "objID": "cf9d89ff-8354-40d8-d051-8ac7707fd95c",
                   "eventName": "PRESSED",
-                  "handlerType": "flow",
+                  "handlerType": "action",
                   "action": "KeypadInputs",
                   "userData": 0
                 }
@@ -2843,7 +2825,7 @@
               "type": "LVGLLabelWidget",
               "left": 0,
               "top": 0,
-              "width": 135,
+              "width": 118,
               "height": 16,
               "customInputs": [],
               "customOutputs": [],
@@ -2883,8 +2865,8 @@
               },
               "group": "",
               "groupIndex": 0,
-              "text": "Setting Parameter",
-              "textType": "literal",
+              "text": "varSettingPara",
+              "textType": "expression",
               "longMode": "WRAP",
               "recolor": false
             },
@@ -3125,7 +3107,15 @@
       ],
       "connectionLines": [],
       "localVariables": [],
-      "userProperties": [],
+      "userProperties": [
+        {
+          "id": "84ad1df4-09bb-4c4d-d9d9-2513738cf2b4",
+          "objID": "7d0e346b-424b-4167-fa3d-d99140c35ec7",
+          "name": "varSettingPara",
+          "type": "string",
+          "assignable": false
+        }
+      ],
       "name": "keypad",
       "left": 0,
       "top": 0,
@@ -3180,7 +3170,7 @@
                 {
                   "objID": "e13ee42b-59d2-476a-cdfe-3c80fa9ffd0e",
                   "eventName": "PRESSED",
-                  "handlerType": "action",
+                  "handlerType": "flow",
                   "action": "openeditParapage",
                   "userData": 0
                 }
@@ -3227,8 +3217,8 @@
               "type": "LVGLLabelWidget",
               "left": -20,
               "top": 0,
-              "width": 3,
-              "height": 16,
+              "width": 1,
+              "height": 1,
               "customInputs": [],
               "customOutputs": [],
               "style": {
@@ -3276,8 +3266,8 @@
               "type": "LVGLLabelWidget",
               "left": 0,
               "top": 0,
-              "width": 140,
-              "height": 16,
+              "width": 1,
+              "height": 1,
               "customInputs": [],
               "customOutputs": [],
               "style": {
@@ -3338,10 +3328,77 @@
           },
           "group": "",
           "groupIndex": 0
+        },
+        {
+          "objID": "85632be5-b342-4123-c7b6-552d9ff74189",
+          "type": "LVGLActionComponent",
+          "left": 304,
+          "top": 85,
+          "width": 336,
+          "height": 54,
+          "customInputs": [],
+          "customOutputs": [],
+          "actions": [
+            {
+              "objID": "f9e0718e-e015-4682-cc11-51ecd69d60c3",
+              "action": "changeScreen",
+              "screen": "EditParaPage",
+              "screenType": "literal",
+              "fadeMode": "FADE_IN",
+              "fadeModeType": "literal",
+              "speed": 200,
+              "speedType": "literal",
+              "delay": 0,
+              "delayType": "literal",
+              "useStack": true,
+              "useStackType": "literal"
+            }
+          ]
+        },
+        {
+          "objID": "de5244af-75b6-4fcc-d2a0-c3b53b4d77ae",
+          "type": "SetVariableActionComponent",
+          "left": 17,
+          "top": 74,
+          "width": 183,
+          "height": 57,
+          "customInputs": [],
+          "customOutputs": [],
+          "entries": [
+            {
+              "objID": "d39d4482-62b4-448a-a671-ef194a361205",
+              "variable": "title",
+              "value": "InputParamName"
+            }
+          ]
         }
       ],
-      "connectionLines": [],
-      "localVariables": [],
+      "connectionLines": [
+        {
+          "objID": "784ee1cd-a9bf-4de3-f558-7d2d2c57d0c2",
+          "source": "b2d9181c-2e06-4890-da1f-845477e02cb4",
+          "output": "PRESSED",
+          "target": "85632be5-b342-4123-c7b6-552d9ff74189",
+          "input": "@seqin"
+        },
+        {
+          "objID": "cc3de48c-d92d-4185-b494-4e2dbcf91416",
+          "source": "b2d9181c-2e06-4890-da1f-845477e02cb4",
+          "output": "PRESSED",
+          "target": "de5244af-75b6-4fcc-d2a0-c3b53b4d77ae",
+          "input": "@seqin"
+        }
+      ],
+      "localVariables": [
+        {
+          "objID": "36ae3268-709c-4171-8c6f-1f1ef7b7529e",
+          "name": "varInput1",
+          "type": "string",
+          "defaultValue": "\"\"",
+          "persistent": false,
+          "native": false
+        }
+      ],
       "userProperties": [
         {
           "id": "181ba5ad-1d31-42b5-c856-2786c457d900",
