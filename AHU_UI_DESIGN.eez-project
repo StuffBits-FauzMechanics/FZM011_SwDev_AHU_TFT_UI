@@ -91,7 +91,7 @@
           "template": "#if defined(EEZ_FOR_LVGL)\n#include <eez/core/vars.h>\n#endif\n\n#include \"ui.h\"\n#include \"screens.h\"\n#include \"images.h\"\n#include \"actions.h\"\n#include \"vars.h\"\n\n//${eez-studio GUI_ASSETS_DEF}\n\n//${eez-studio LVGL_NATIVE_VARS_TABLE_DEF}\n\n//${eez-studio LVGL_ACTIONS_ARRAY_DEF}\n\n#if defined(EEZ_FOR_LVGL)\n\nvoid ui_init() {\n    eez_flow_init(assets, sizeof(assets), (lv_obj_t **)&objects, sizeof(objects), images, sizeof(images), actions);\n}\n\nvoid ui_tick() {\n    eez_flow_tick();\n    tick_screen(g_currentScreen);\n}\n\n#else\n\n#include <string.h>\n\nstatic int16_t currentScreen = -1;\n\nstatic lv_obj_t *getLvglObjectFromIndex(int32_t index) {\n    if (index == -1) {\n        return 0;\n    }\n    return ((lv_obj_t **)&objects)[index];\n}\n\nvoid loadScreen(enum ScreensEnum screenId) {\n    currentScreen = screenId - 1;\n    lv_obj_t *screen = getLvglObjectFromIndex(currentScreen);\n    lv_scr_load(screen);\n}\n\nvoid ui_init() {\n    create_screens();\n    loadScreen(SCREEN_ID_MAIN);\n}\n\nvoid ui_tick() {\n    tick_screen(currentScreen);\n}\n\n#endif\n"
         }
       ],
-      "destinationFolder": "..\\..\\FW\\FZM011-FwDev-AHU_TFT_ESP32S3\\main\\APP\\ui",
+      "destinationFolder": "..\\..\\FW\\AHU_exisotng\\FZM011-FwDev-AHU_TFT_ESP32S3\\main\\APP\\ui",
       "separateFolderForImagesAndFonts": true,
       "imageExportMode": "source",
       "fontExportMode": "source",
@@ -106,16 +106,45 @@
   },
   "variables": {
     "objID": "c6c71e16-53e1-217f-d03b-cef56c6b037a",
-    "globalVariables": [
+    "globalVariables": [],
+    "structures": [
       {
-        "objID": "006c7ec4-d80f-445d-b5b2-914e5f06f700",
-        "name": "title",
-        "type": "string",
-        "defaultValue": "\"Title\"",
-        "persistent": false
+        "objID": "34eb9b58-2c8f-42c4-a381-a36ff7dba456",
+        "name": "channel_db_t",
+        "fields": [
+          {
+            "objID": "e9fec3a2-19d8-43ea-d67c-68e4d3bd8be8",
+            "name": "range_high",
+            "type": "float"
+          },
+          {
+            "objID": "05023871-ca50-4eee-e6e9-3d3f3d18c152",
+            "name": "range_min",
+            "type": "float"
+          },
+          {
+            "objID": "3c9fc801-7529-4fa4-aa13-572bc0b406bd",
+            "name": "analog_high",
+            "type": "float"
+          },
+          {
+            "objID": "1b891033-ae16-4343-8c4f-0076747f705a",
+            "name": "analog_low",
+            "type": "float"
+          },
+          {
+            "objID": "51d57094-09ca-472b-8302-2b9b9d5392f9",
+            "name": "alarm_high",
+            "type": "float"
+          },
+          {
+            "objID": "4cb847db-6252-4395-b152-59557a121498",
+            "name": "alarm_low",
+            "type": "float"
+          }
+        ]
       }
     ],
-    "structures": [],
     "enums": []
   },
   "actions": [
@@ -142,187 +171,6 @@
       "localVariables": [],
       "userProperties": [],
       "name": "KeypadSave"
-    },
-    {
-      "objID": "90609d02-532f-489e-b9b8-2ff892c94f08",
-      "components": [],
-      "connectionLines": [],
-      "localVariables": [],
-      "userProperties": [],
-      "name": "openeditParapage"
-    },
-    {
-      "objID": "9234b4cc-7b98-4944-f3df-0796c4a6bd69",
-      "components": [],
-      "connectionLines": [],
-      "localVariables": [],
-      "userProperties": [],
-      "name": "openPressurePage"
-    },
-    {
-      "objID": "caa3b7c4-5fb8-4066-e8f1-849aee9bfa56",
-      "components": [],
-      "connectionLines": [],
-      "localVariables": [],
-      "userProperties": [],
-      "name": "switchToCalibrations"
-    },
-    {
-      "objID": "de804042-9b38-4649-b023-93797a15d68b",
-      "components": [
-        {
-          "objID": "c2c97b6e-1b05-4982-d69a-798a3899f2cb",
-          "type": "StartActionComponent",
-          "left": -296,
-          "top": -193,
-          "width": 87,
-          "height": 24,
-          "customInputs": [],
-          "customOutputs": []
-        },
-        {
-          "objID": "567b1dd3-3f9f-42c6-af1b-fb352746d018",
-          "type": "LVGLActionComponent",
-          "left": -121,
-          "top": -193,
-          "width": 287,
-          "height": 54,
-          "customInputs": [],
-          "customOutputs": [],
-          "actions": [
-            {
-              "objID": "6915a87e-bc88-44fa-d457-e1d07601b0d0",
-              "action": "changeScreen",
-              "screen": "Main",
-              "screenType": "literal",
-              "fadeMode": "FADE_IN",
-              "fadeModeType": "literal",
-              "speed": 200,
-              "speedType": "literal",
-              "delay": 0,
-              "delayType": "literal",
-              "useStack": true,
-              "useStackType": "literal"
-            }
-          ]
-        },
-        {
-          "objID": "56b5cb6e-7ad4-4d44-8155-5be65ee06621",
-          "type": "EndActionComponent",
-          "left": 219,
-          "top": -193,
-          "width": 87,
-          "height": 24,
-          "customInputs": [],
-          "customOutputs": []
-        }
-      ],
-      "connectionLines": [
-        {
-          "objID": "d39130db-3830-4150-c4cc-b6ee32000e20",
-          "source": "c2c97b6e-1b05-4982-d69a-798a3899f2cb",
-          "output": "@seqout",
-          "target": "567b1dd3-3f9f-42c6-af1b-fb352746d018",
-          "input": "@seqin"
-        },
-        {
-          "objID": "60f0a0dc-aa3f-4ad5-b5dc-03339e69212d",
-          "source": "567b1dd3-3f9f-42c6-af1b-fb352746d018",
-          "output": "@seqout",
-          "target": "56b5cb6e-7ad4-4d44-8155-5be65ee06621",
-          "input": "@seqin"
-        }
-      ],
-      "localVariables": [],
-      "userProperties": [],
-      "name": "switchToHomePage"
-    },
-    {
-      "objID": "6a4e8b8b-51c8-4239-96fe-f0edaa28e07f",
-      "components": [],
-      "connectionLines": [],
-      "localVariables": [],
-      "userProperties": [],
-      "name": "switchToOthersSettings"
-    },
-    {
-      "objID": "42294a2c-4a24-463d-a146-13394db01681",
-      "components": [],
-      "connectionLines": [],
-      "localVariables": [],
-      "userProperties": [],
-      "name": "switchToPressureSettings"
-    },
-    {
-      "objID": "c438e95b-12f2-44f6-bcfc-3348339ab935",
-      "components": [
-        {
-          "objID": "8962dc53-1caa-4665-f71c-785529fd1de2",
-          "type": "StartActionComponent",
-          "left": -363,
-          "top": -220,
-          "width": 87,
-          "height": 24,
-          "customInputs": [],
-          "customOutputs": []
-        },
-        {
-          "objID": "cf4ed9a2-42bd-4ab9-fc1b-4654f9e42562",
-          "type": "LVGLActionComponent",
-          "left": -238,
-          "top": -220,
-          "width": 317,
-          "height": 54,
-          "customInputs": [],
-          "customOutputs": [],
-          "actions": [
-            {
-              "objID": "39db79e5-c548-4103-9336-da6c0c277709",
-              "action": "changeScreen",
-              "screen": "SettingsPage",
-              "screenType": "literal",
-              "fadeMode": "NONE",
-              "fadeModeType": "literal",
-              "speed": 200,
-              "speedType": "literal",
-              "delay": 0,
-              "delayType": "literal",
-              "useStack": true,
-              "useStackType": "literal"
-            }
-          ]
-        },
-        {
-          "objID": "b84ed132-e540-41b4-a5cc-e6ca8a747e6e",
-          "type": "EndActionComponent",
-          "left": 137,
-          "top": -220,
-          "width": 87,
-          "height": 24,
-          "customInputs": [],
-          "customOutputs": []
-        }
-      ],
-      "connectionLines": [
-        {
-          "objID": "22c039e4-5076-4e83-873b-5373e2fdb7e2",
-          "source": "8962dc53-1caa-4665-f71c-785529fd1de2",
-          "output": "@seqout",
-          "target": "cf4ed9a2-42bd-4ab9-fc1b-4654f9e42562",
-          "input": "@seqin"
-        },
-        {
-          "objID": "0c8ad04e-540a-4513-a9b3-1d7c156304f9",
-          "source": "cf4ed9a2-42bd-4ab9-fc1b-4654f9e42562",
-          "output": "@seqout",
-          "target": "b84ed132-e540-41b4-a5cc-e6ca8a747e6e",
-          "input": "@seqin"
-        }
-      ],
-      "localVariables": [],
-      "userProperties": [],
-      "name": "switchToSettings",
-      "implementationType": "flow"
     }
   ],
   "userPages": [
@@ -1058,52 +906,72 @@
           "groupIndex": 0
         },
         {
-          "objID": "71b8dfd5-fd59-451d-ce96-38da9993c2e8",
-          "type": "CallActionActionComponent",
-          "left": 151,
-          "top": 612,
-          "width": 132,
-          "height": 24,
+          "objID": "26ea14ee-9db1-404a-e7dc-6993432892da",
+          "type": "LVGLActionComponent",
+          "left": 377,
+          "top": 506,
+          "width": 335,
+          "height": 53,
           "customInputs": [],
           "customOutputs": [],
           "catchError": false,
-          "description": "",
-          "action": "switchToSettings",
-          "userPropertyValues": {
-            "objID": "388f364c-a7cf-4576-94e7-8bdfdc95318e",
-            "values": {}
-          }
+          "actions": [
+            {
+              "objID": "845e7a4d-ea6a-419b-d904-7b3e67367e0a",
+              "action": "changeScreen",
+              "screen": "EditParaPage",
+              "screenType": "literal",
+              "fadeMode": "FADE_IN",
+              "fadeModeType": "literal",
+              "speed": 200,
+              "speedType": "literal",
+              "delay": 0,
+              "delayType": "literal",
+              "useStack": true,
+              "useStackType": "literal"
+            }
+          ]
         },
         {
-          "objID": "1c58595d-6b7e-461c-87ea-26c8f1e83f5d",
-          "type": "CallActionActionComponent",
-          "left": 366,
-          "top": 496,
-          "width": 138,
-          "height": 24,
+          "objID": "b037b946-0007-4bff-d844-0ebd51b5b55c",
+          "type": "LVGLActionComponent",
+          "left": 110,
+          "top": 527,
+          "width": 335,
+          "height": 53,
           "customInputs": [],
           "customOutputs": [],
-          "action": "openeditParapage",
-          "userPropertyValues": {
-            "objID": "ef5e1106-471d-4681-bd8e-a1dccdb0e528",
-            "values": {}
-          }
+          "actions": [
+            {
+              "objID": "9aa485a2-cd72-4375-fc7e-21148bef2b54",
+              "action": "changeScreen",
+              "screen": "SettingsPage",
+              "screenType": "literal",
+              "fadeMode": "FADE_IN",
+              "fadeModeType": "literal",
+              "speed": 200,
+              "speedType": "literal",
+              "delay": 0,
+              "delayType": "literal",
+              "useStack": true,
+              "useStackType": "literal"
+            }
+          ]
         }
       ],
       "connectionLines": [
         {
-          "objID": "b3c7cb69-0022-4590-d5d6-eb2587c9008f",
-          "source": "8ef1aabd-1922-4b00-a988-64c16873e9a6",
-          "output": "PRESSED",
-          "target": "71b8dfd5-fd59-451d-ce96-38da9993c2e8",
-          "input": "@seqin",
-          "disabled": false
-        },
-        {
-          "objID": "14f54d13-050a-47b8-a81f-d24353ec3abd",
+          "objID": "bbfee988-3120-4387-d422-fc8916a9d097",
           "source": "913463c1-e833-44a3-9c98-260d05d003b0",
           "output": "PRESSED",
-          "target": "1c58595d-6b7e-461c-87ea-26c8f1e83f5d",
+          "target": "26ea14ee-9db1-404a-e7dc-6993432892da",
+          "input": "@seqin"
+        },
+        {
+          "objID": "db451697-d1cf-45be-dbab-87c078d55195",
+          "source": "8ef1aabd-1922-4b00-a988-64c16873e9a6",
+          "output": "PRESSED",
+          "target": "b037b946-0007-4bff-d844-0ebd51b5b55c",
           "input": "@seqin"
         }
       ],
@@ -1184,7 +1052,8 @@
               "userPropertyValues": {
                 "objID": "f64097cb-f255-4bfa-992a-3ebf04da857f",
                 "values": {
-                  "84ad1df4-09bb-4c4d-d9d9-2513738cf2b4": "title"
+                  "84ad1df4-09bb-4c4d-d9d9-2513738cf2b4": "",
+                  "ca29ed5f-4cb0-404e-a8fe-ffe7f7406c1a": ""
                 }
               }
             }
@@ -1200,9 +1069,77 @@
             "objID": "a555d37e-e77c-4597-dcb6-cce1b04fb4e6"
           },
           "groupIndex": 0
+        },
+        {
+          "objID": "ffef0e3e-eba6-4c5d-d374-ea2a4e0b050b",
+          "type": "InputActionComponent",
+          "left": 346,
+          "top": 131,
+          "width": 125,
+          "height": 24,
+          "customInputs": [],
+          "customOutputs": [],
+          "name": "inputUpperLimit",
+          "inputType": "float"
+        },
+        {
+          "objID": "b5bf70ee-74dc-4c24-e3c4-e3a13b26a37e",
+          "type": "InputActionComponent",
+          "left": 346,
+          "top": 172,
+          "width": 126,
+          "height": 24,
+          "customInputs": [],
+          "customOutputs": [],
+          "name": "inputLowerLimit",
+          "inputType": "float"
+        },
+        {
+          "objID": "dba0e1be-e72b-4ce7-b4ec-fec69b643186",
+          "type": "InputActionComponent",
+          "left": 345,
+          "top": 216,
+          "width": 116,
+          "height": 24,
+          "customInputs": [],
+          "customOutputs": [],
+          "name": "inputEditValue",
+          "inputType": "float"
+        },
+        {
+          "objID": "69557a01-9381-493c-8775-cbc2d7ba54e1",
+          "type": "EndActionComponent",
+          "left": 385,
+          "top": 321,
+          "width": 87,
+          "height": 24,
+          "customInputs": [],
+          "customOutputs": []
         }
       ],
-      "connectionLines": [],
+      "connectionLines": [
+        {
+          "objID": "81a20bbb-c24d-4c10-e565-357c16818511",
+          "source": "dba0e1be-e72b-4ce7-b4ec-fec69b643186",
+          "output": "@seqout",
+          "target": "69557a01-9381-493c-8775-cbc2d7ba54e1",
+          "input": "@seqin"
+        },
+        {
+          "objID": "87df8c69-5fdb-4ebd-9687-64869a6c3cf9",
+          "source": "b5bf70ee-74dc-4c24-e3c4-e3a13b26a37e",
+          "output": "@seqout",
+          "target": "69557a01-9381-493c-8775-cbc2d7ba54e1",
+          "input": "@seqin"
+        },
+        {
+          "objID": "564ae1c8-4640-4ce6-bdc8-ee9ab4cdf082",
+          "source": "ffef0e3e-eba6-4c5d-d374-ea2a4e0b050b",
+          "output": "@seqout",
+          "target": "69557a01-9381-493c-8775-cbc2d7ba54e1",
+          "input": "@seqin"
+        }
+      ],
       "localVariables": [],
       "userProperties": [],
       "name": "EditParaPage",
@@ -1283,7 +1220,10 @@
               "userPropertyValues": {
                 "objID": "a249d09c-6aee-408d-ab4b-0d274a45f81d",
                 "values": {
-                  "181ba5ad-1d31-42b5-c856-2786c457d900": "\"Alarm Low\""
+                  "181ba5ad-1d31-42b5-c856-2786c457d900": "\"Alarm Low\"",
+                  "864dc8c3-8461-4c6d-ee16-156aaa6403e7": "channel_db.alarm_high",
+                  "650b1470-8069-40d2-dcd7-0286c5b7d97d": "channel_db.range_min",
+                  "3136fd47-bb1b-425f-a6e0-e0b2fad2d77e": "channel_db.alarm_low"
                 }
               }
             },
@@ -1291,7 +1231,7 @@
               "objID": "dd9cca98-becb-4deb-d0c0-e8e28af2c910",
               "type": "LVGLUserWidgetWidget",
               "left": 0,
-              "top": 107,
+              "top": 99,
               "width": 272,
               "height": 48,
               "customInputs": [],
@@ -1329,7 +1269,10 @@
               "userPropertyValues": {
                 "objID": "c5d3cd3c-7d13-4c25-db43-896625f20ba6",
                 "values": {
-                  "181ba5ad-1d31-42b5-c856-2786c457d900": "\"Alarm High\""
+                  "181ba5ad-1d31-42b5-c856-2786c457d900": "\"Alarm High\"",
+                  "864dc8c3-8461-4c6d-ee16-156aaa6403e7": "channel_db.range_high",
+                  "650b1470-8069-40d2-dcd7-0286c5b7d97d": "channel_db.alarm_low",
+                  "3136fd47-bb1b-425f-a6e0-e0b2fad2d77e": "channel_db.alarm_high"
                 }
               }
             }
@@ -1354,6 +1297,14 @@
           "name": "varEditParaName",
           "type": "string",
           "defaultValue": "\"Alarm Low\"",
+          "persistent": false,
+          "native": false
+        },
+        {
+          "objID": "c480a50c-7aca-41ef-a481-a351686420d7",
+          "name": "channel_db",
+          "type": "struct:channel_db_t",
+          "defaultValue": "null",
           "persistent": false,
           "native": false
         }
@@ -1466,7 +1417,7 @@
                   "eventName": "PRESSED",
                   "handlerType": "flow",
                   "action": "switchToPressureSettings",
-                  "userData": 1
+                  "userData": 0
                 }
               ],
               "identifier": "ButtonPressureSettingsCh_1",
@@ -1560,15 +1511,7 @@
                 "childStyles": []
               },
               "timeline": [],
-              "eventHandlers": [
-                {
-                  "objID": "44ba79d4-62ce-4c35-cdef-2b91a31aa8eb",
-                  "eventName": "PRESSED",
-                  "handlerType": "flow",
-                  "action": "switchToHomePage",
-                  "userData": 0
-                }
-              ],
+              "eventHandlers": [],
               "identifier": "ButtonSettingsHomeScreen",
               "leftUnit": "px",
               "topUnit": "px",
@@ -1667,15 +1610,7 @@
                 "childStyles": []
               },
               "timeline": [],
-              "eventHandlers": [
-                {
-                  "objID": "8676efbc-db64-4588-bdd5-6440397c64c7",
-                  "eventName": "PRESSED",
-                  "handlerType": "action",
-                  "action": "switchToOthersSettings",
-                  "userData": 0
-                }
-              ],
+              "eventHandlers": [],
               "identifier": "ButtonOthersSetting",
               "leftUnit": "px",
               "topUnit": "px",
@@ -1767,15 +1702,7 @@
                 "childStyles": []
               },
               "timeline": [],
-              "eventHandlers": [
-                {
-                  "objID": "ca359ddf-f971-4fa1-95f6-d91b56262b5a",
-                  "eventName": "PRESSED",
-                  "handlerType": "action",
-                  "action": "switchToPressureSettings",
-                  "userData": 2
-                }
-              ],
+              "eventHandlers": [],
               "identifier": "ButtonPressureSettingsCh_2",
               "leftUnit": "px",
               "topUnit": "px",
@@ -1867,15 +1794,7 @@
                 "childStyles": []
               },
               "timeline": [],
-              "eventHandlers": [
-                {
-                  "objID": "3c6e3f42-fad1-4958-c49f-df5cdb0d78b9",
-                  "eventName": "PRESSED",
-                  "handlerType": "action",
-                  "action": "switchToPressureSettings",
-                  "userData": 3
-                }
-              ],
+              "eventHandlers": [],
               "identifier": "ButtonPressureSettingsCh_3",
               "leftUnit": "px",
               "topUnit": "px",
@@ -1967,15 +1886,7 @@
                 "childStyles": []
               },
               "timeline": [],
-              "eventHandlers": [
-                {
-                  "objID": "d91f844d-bd86-46cf-e5b7-28badbe1e2bc",
-                  "eventName": "PRESSED",
-                  "handlerType": "flow",
-                  "action": "switchToCalibrations",
-                  "userData": 0
-                }
-              ],
+              "eventHandlers": [],
               "identifier": "ButtonSettingsRigtArrow",
               "leftUnit": "px",
               "topUnit": "px",
@@ -2024,42 +1935,12 @@
           "groupIndex": 0
         },
         {
-          "objID": "995f81d4-bad1-41ef-d640-2b98ebff9f61",
-          "type": "CallActionActionComponent",
-          "left": 355,
-          "top": 445,
-          "width": 154,
-          "height": 24,
-          "customInputs": [],
-          "customOutputs": [],
-          "action": "switchToCalibrations",
-          "userPropertyValues": {
-            "objID": "bae275a1-305c-4291-faee-8e1de70a8c17",
-            "values": {}
-          }
-        },
-        {
-          "objID": "bbf09b51-5774-49ec-f0b5-62646c930f4e",
-          "type": "CallActionActionComponent",
-          "left": 242,
-          "top": 540,
-          "width": 149,
-          "height": 24,
-          "customInputs": [],
-          "customOutputs": [],
-          "action": "switchToHomePage",
-          "userPropertyValues": {
-            "objID": "40e13ad1-7bb2-4da8-d871-1a5393ba0ec4",
-            "values": {}
-          }
-        },
-        {
           "objID": "b155d307-f1da-4a96-8461-d76d6cf5e333",
           "type": "LVGLActionComponent",
-          "left": 302,
-          "top": 74,
+          "left": 317,
+          "top": 75,
           "width": 317,
-          "height": 54,
+          "height": 53,
           "customInputs": [],
           "customOutputs": [],
           "actions": [
@@ -2081,20 +1962,6 @@
         }
       ],
       "connectionLines": [
-        {
-          "objID": "a131e994-af08-47c4-b6bc-9e3cbb383512",
-          "source": "d5a46f84-8729-4aad-cdd1-2eb54508c885",
-          "output": "PRESSED",
-          "target": "995f81d4-bad1-41ef-d640-2b98ebff9f61",
-          "input": "@seqin"
-        },
-        {
-          "objID": "db3062c3-c238-4090-b34b-e67f5945f6f5",
-          "source": "420d3ad3-8940-4a44-c823-12b2c5ed9d6a",
-          "output": "PRESSED",
-          "target": "bbf09b51-5774-49ec-f0b5-62646c930f4e",
-          "input": "@seqin"
-        },
         {
           "objID": "599c9076-5f25-40ac-883b-a77d51af44d9",
           "source": "9737d107-78ed-475c-8d8e-98e4f44b6a29",
@@ -2589,7 +2456,15 @@
                 "childStyles": []
               },
               "timeline": [],
-              "eventHandlers": [],
+              "eventHandlers": [
+                {
+                  "objID": "b56ea349-cbf8-4b55-eee3-94821a3b6a85",
+                  "eventName": "PRESSED",
+                  "handlerType": "flow",
+                  "action": "KeypadInputs",
+                  "userData": 0
+                }
+              ],
               "identifier": "btn_Cancel",
               "leftUnit": "px",
               "topUnit": "px",
@@ -2915,7 +2790,7 @@
                       "eventName": "PRESSED",
                       "handlerType": "action",
                       "action": "KeypadBackspace",
-                      "userData": 1
+                      "userData": 0
                     }
                   ],
                   "identifier": "btnBackSpace",
@@ -3001,7 +2876,7 @@
                 {
                   "objID": "4f170f33-8215-4c96-a48a-7e605e82bccf",
                   "eventName": "PRESSED",
-                  "handlerType": "action",
+                  "handlerType": "flow",
                   "action": "KeypadSave",
                   "userData": 0
                 }
@@ -3103,11 +2978,97 @@
           },
           "group": "",
           "groupIndex": 0
+        },
+        {
+          "objID": "7625f9a8-52a0-4e15-e73c-db7b008151c2",
+          "type": "LVGLActionComponent",
+          "left": 58,
+          "top": 486,
+          "width": 310,
+          "height": 53,
+          "customInputs": [],
+          "customOutputs": [],
+          "actions": [
+            {
+              "objID": "434cb85d-c717-46a4-be81-b8719749e7be",
+              "action": "changeToPreviousScreen",
+              "fadeMode": "NONE",
+              "fadeModeType": "literal",
+              "speed": 200,
+              "speedType": "literal",
+              "delay": 0,
+              "delayType": "literal"
+            }
+          ]
+        },
+        {
+          "objID": "cb150e65-2fdb-420e-90dc-a578ddd95abf",
+          "type": "CallActionActionComponent",
+          "left": 350,
+          "top": 411,
+          "width": 103,
+          "height": 52,
+          "customInputs": [],
+          "customOutputs": [
+            {
+              "objID": "682c75ab-abb2-4496-b05e-82ed2d228c9f",
+              "name": "varEditedValue",
+              "type": "float"
+            }
+          ],
+          "action": "KeypadSave",
+          "userPropertyValues": {
+            "objID": "1d4e4552-e343-4a64-b111-b9c9646eda7a",
+            "values": {}
+          }
         }
       ],
-      "connectionLines": [],
+      "connectionLines": [
+        {
+          "objID": "c2a240df-c1d8-4f7b-c905-ebbeaf2cf50c",
+          "source": "f9380d05-7cb8-4fb9-bdfe-f69c22f042cf",
+          "output": "PRESSED",
+          "target": "7625f9a8-52a0-4e15-e73c-db7b008151c2",
+          "input": "@seqin"
+        },
+        {
+          "objID": "ddb182d7-e788-48ee-9d73-a8eba8fcf3d4",
+          "source": "fc25db9f-5588-417f-eeb3-742ae9dcaaee",
+          "output": "PRESSED",
+          "target": "cb150e65-2fdb-420e-90dc-a578ddd95abf",
+          "input": "@seqin"
+        },
+        {
+          "objID": "bb41ca54-a9c8-4afe-c501-26cc027527e5",
+          "source": "cb150e65-2fdb-420e-90dc-a578ddd95abf",
+          "output": "varEditedValue",
+          "target": "7625f9a8-52a0-4e15-e73c-db7b008151c2",
+          "input": "@seqin"
+        }
+      ],
       "localVariables": [],
       "userProperties": [
+        {
+          "id": "7628a163-ea1d-492e-9a0e-3dd52f509c34",
+          "objID": "f19917e4-1c98-42d1-a8a1-b022040970ef",
+          "name": "varUpperLimit",
+          "type": "float",
+          "assignable": false
+        },
+        {
+          "id": "ca29ed5f-4cb0-404e-a8fe-ffe7f7406c1a",
+          "objID": "4847d3f1-239b-4ec2-d0e6-e9d2e47e00ee",
+          "name": "varLowerLimit",
+          "type": "float",
+          "assignable": false
+        },
+        {
+          "id": "9aa97d96-2a79-4580-a421-19172a98cba2",
+          "objID": "24b1d22f-3ed5-42a3-d23a-de503c1b64ab",
+          "name": "varEditValue",
+          "type": "float",
+          "assignable": false
+        },
         {
           "id": "84ad1df4-09bb-4c4d-d9d9-2513738cf2b4",
           "objID": "7d0e346b-424b-4167-fa3d-d99140c35ec7",
@@ -3217,8 +3178,8 @@
               "type": "LVGLLabelWidget",
               "left": -20,
               "top": 0,
-              "width": 1,
-              "height": 1,
+              "width": 3,
+              "height": 16,
               "customInputs": [],
               "customOutputs": [],
               "style": {
@@ -3266,8 +3227,8 @@
               "type": "LVGLLabelWidget",
               "left": 0,
               "top": 0,
-              "width": 1,
-              "height": 1,
+              "width": 129,
+              "height": 16,
               "customInputs": [],
               "customOutputs": [],
               "style": {
@@ -3306,7 +3267,7 @@
               },
               "group": "",
               "groupIndex": 0,
-              "text": "InputParamName",
+              "text": "editParamName",
               "textType": "expression",
               "longMode": "WRAP",
               "recolor": false
@@ -3332,11 +3293,32 @@
         {
           "objID": "85632be5-b342-4123-c7b6-552d9ff74189",
           "type": "LVGLActionComponent",
-          "left": 304,
-          "top": 85,
-          "width": 336,
-          "height": 54,
-          "customInputs": [],
+          "left": 478,
+          "top": 131,
+          "width": 439,
+          "height": 108,
+          "customInputs": [
+            {
+              "objID": "97051edb-bb20-467b-f356-2daede626d93",
+              "name": "inputParamName",
+              "type": "string"
+            },
+            {
+              "objID": "5f8c385b-81ab-4d73-c1b8-56a1d5f45aa8",
+              "name": "inputEditValue",
+              "type": "float"
+            },
+            {
+              "objID": "1c7542c6-3169-45a6-a115-05338b087cfb",
+              "name": "inputLowerLimit",
+              "type": "float"
+            },
+            {
+              "objID": "aa478ff1-4bed-4d83-d310-9a011dcfb294",
+              "name": "inputUpperLimit",
+              "type": "float"
+            }
+          ],
           "customOutputs": [],
           "actions": [
             {
@@ -3360,50 +3342,217 @@
           "type": "SetVariableActionComponent",
           "left": 17,
           "top": 74,
-          "width": 183,
+          "width": 313,
           "height": 57,
           "customInputs": [],
-          "customOutputs": [],
+          "customOutputs": [
+            {
+              "objID": "162bf630-82fa-4fff-f70d-0c21090980d7",
+              "name": "outputParamName",
+              "type": "float"
+            }
+          ],
           "entries": [
             {
               "objID": "d39d4482-62b4-448a-a671-ef194a361205",
-              "variable": "title",
-              "value": "InputParamName"
+              "variable": "paramName",
+              "value": "editParamName"
             }
           ]
+        },
+        {
+          "objID": "2772d6f9-c6fc-49cd-9ac9-6f7a82c386a5",
+          "type": "SetVariableActionComponent",
+          "left": 15,
+          "top": 147,
+          "width": 325,
+          "height": 57,
+          "customInputs": [],
+          "customOutputs": [
+            {
+              "objID": "70e6194a-1aa3-4922-e707-60d59af960cb",
+              "name": "outputParamName",
+              "type": "float"
+            }
+          ],
+          "entries": [
+            {
+              "objID": "f7023bb0-ba72-40d2-ef46-067b2e051ee2",
+              "variable": "paramValue",
+              "value": "editParamValue"
+            }
+          ]
+        },
+        {
+          "objID": "d9dd423a-795b-4cb9-8e57-81a72bcf95d6",
+          "type": "SetVariableActionComponent",
+          "left": 15,
+          "top": 220,
+          "width": 374,
+          "height": 57,
+          "customInputs": [],
+          "customOutputs": [
+            {
+              "objID": "9b5d842b-d7b9-48a2-b4c3-f37cc6bbfffe",
+              "name": "outputParamName",
+              "type": "float"
+            }
+          ],
+          "entries": [
+            {
+              "objID": "4b54203f-3df8-4240-9730-dfea5036a1d1",
+              "variable": "paramLowerLimit",
+              "value": "editParamLowLimit"
+            }
+          ]
+        },
+        {
+          "objID": "130d74c2-939c-43b9-deec-3a1c9a7ca8b5",
+          "type": "SetVariableActionComponent",
+          "left": 17,
+          "top": 294,
+          "width": 313,
+          "height": 57,
+          "customInputs": [],
+          "customOutputs": [
+            {
+              "objID": "8e1e4ba8-a264-48b1-8618-bb219f050680",
+              "name": "outputParamName",
+              "type": "float"
+            }
+          ],
+          "entries": [
+            {
+              "objID": "54b07bf5-0503-45c4-d727-c89300148260",
+              "variable": "paramName",
+              "value": "editParamName"
+            }
+          ]
+        },
+        {
+          "objID": "563c2c1e-16bd-424d-c338-fa0f1d203832",
+          "type": "InputActionComponent",
+          "left": 478,
+          "top": 39,
+          "width": 156,
+          "height": 24,
+          "customInputs": [],
+          "customOutputs": [],
+          "name": "editParamLowerLimit",
+          "inputType": "float"
         }
       ],
       "connectionLines": [
-        {
-          "objID": "784ee1cd-a9bf-4de3-f558-7d2d2c57d0c2",
-          "source": "b2d9181c-2e06-4890-da1f-845477e02cb4",
-          "output": "PRESSED",
-          "target": "85632be5-b342-4123-c7b6-552d9ff74189",
-          "input": "@seqin"
-        },
         {
           "objID": "cc3de48c-d92d-4185-b494-4e2dbcf91416",
           "source": "b2d9181c-2e06-4890-da1f-845477e02cb4",
           "output": "PRESSED",
           "target": "de5244af-75b6-4fcc-d2a0-c3b53b4d77ae",
           "input": "@seqin"
+        },
+        {
+          "objID": "52f883bf-e395-433c-e72a-6a5ae11fdbf9",
+          "source": "de5244af-75b6-4fcc-d2a0-c3b53b4d77ae",
+          "output": "outputParamName",
+          "target": "85632be5-b342-4123-c7b6-552d9ff74189",
+          "input": "inputParamName"
+        },
+        {
+          "objID": "edca0d75-aabe-4fe1-8dfd-4bba14b43fdf",
+          "source": "2772d6f9-c6fc-49cd-9ac9-6f7a82c386a5",
+          "output": "outputParamName",
+          "target": "85632be5-b342-4123-c7b6-552d9ff74189",
+          "input": "inputEditValue"
+        },
+        {
+          "objID": "40e0c9a8-ff8b-4fb9-d587-2e7d688ae2c5",
+          "source": "b2d9181c-2e06-4890-da1f-845477e02cb4",
+          "output": "PRESSED",
+          "target": "2772d6f9-c6fc-49cd-9ac9-6f7a82c386a5",
+          "input": "@seqin"
+        },
+        {
+          "objID": "2ed751e7-9d6a-4380-ac2c-f0f57538c96d",
+          "source": "b2d9181c-2e06-4890-da1f-845477e02cb4",
+          "output": "PRESSED",
+          "target": "d9dd423a-795b-4cb9-8e57-81a72bcf95d6",
+          "input": "@seqin"
+        },
+        {
+          "objID": "893f54f3-2ac9-4612-ee66-9693438827e7",
+          "source": "b2d9181c-2e06-4890-da1f-845477e02cb4",
+          "output": "PRESSED",
+          "target": "130d74c2-939c-43b9-deec-3a1c9a7ca8b5",
+          "input": "@seqin"
+        },
+        {
+          "objID": "3bf309e3-069f-481d-d6a4-eaa3598bdd90",
+          "source": "563c2c1e-16bd-424d-c338-fa0f1d203832",
+          "output": "@seqout",
+          "target": "85632be5-b342-4123-c7b6-552d9ff74189",
+          "input": "inputLowerLimit"
         }
       ],
       "localVariables": [
         {
-          "objID": "36ae3268-709c-4171-8c6f-1f1ef7b7529e",
-          "name": "varInput1",
+          "objID": "73193ccd-8381-44d6-c460-610f9223dc1d",
+          "name": "paramName",
           "type": "string",
-          "defaultValue": "\"\"",
+          "defaultValue": "\"Title\"",
+          "persistent": false,
+          "native": false
+        },
+        {
+          "objID": "a2b1088c-5376-4cf5-cbfb-3e9d2647086b",
+          "name": "paramValue",
+          "type": "float",
+          "defaultValue": "0",
+          "persistent": false,
+          "native": false
+        },
+        {
+          "objID": "b70539f8-e07a-4f98-8a6e-efbb35c1342b",
+          "name": "paramUpperLimit",
+          "type": "float",
+          "defaultValue": "0",
+          "persistent": false,
+          "native": false
+        },
+        {
+          "objID": "cde67bb5-1ee2-4d1b-9e01-bf9c3ca855e8",
+          "name": "paramLowerLimit",
+          "type": "float",
+          "defaultValue": "0",
           "persistent": false,
           "native": false
         }
       ],
       "userProperties": [
         {
+          "id": "864dc8c3-8461-4c6d-ee16-156aaa6403e7",
+          "objID": "6bad46a7-1034-471a-d956-3ffa035048ec",
+          "name": "editParamHighLimit",
+          "type": "float",
+          "assignable": false
+        },
+        {
+          "id": "650b1470-8069-40d2-dcd7-0286c5b7d97d",
+          "objID": "856bd353-f647-480d-d676-ab5f1fd57f71",
+          "name": "editParamLowLimit",
+          "type": "float",
+          "assignable": false
+        },
+        {
+          "id": "3136fd47-bb1b-425f-a6e0-e0b2fad2d77e",
+          "objID": "be2fad95-887d-48a0-adc9-087b488786e0",
+          "name": "editParamValue",
+          "type": "float",
+          "assignable": false
+        },
+        {
           "id": "181ba5ad-1d31-42b5-c856-2786c457d900",
           "objID": "e6e934ca-2072-49f6-ff89-23fa55630001",
-          "name": "InputParamName",
+          "name": "editParamName",
           "type": "string",
           "assignable": false
         }
