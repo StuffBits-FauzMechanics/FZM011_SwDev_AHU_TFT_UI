@@ -91,7 +91,7 @@
           "template": "#if defined(EEZ_FOR_LVGL)\n#include <eez/core/vars.h>\n#endif\n\n#include \"ui.h\"\n#include \"screens.h\"\n#include \"images.h\"\n#include \"actions.h\"\n#include \"vars.h\"\n\n//${eez-studio GUI_ASSETS_DEF}\n\n//${eez-studio LVGL_NATIVE_VARS_TABLE_DEF}\n\n//${eez-studio LVGL_ACTIONS_ARRAY_DEF}\n\n#if defined(EEZ_FOR_LVGL)\n\nvoid ui_init() {\n    eez_flow_init(assets, sizeof(assets), (lv_obj_t **)&objects, sizeof(objects), images, sizeof(images), actions);\n}\n\nvoid ui_tick() {\n    eez_flow_tick();\n    tick_screen(g_currentScreen);\n}\n\n#else\n\n#include <string.h>\n\nstatic int16_t currentScreen = -1;\n\nstatic lv_obj_t *getLvglObjectFromIndex(int32_t index) {\n    if (index == -1) {\n        return 0;\n    }\n    return ((lv_obj_t **)&objects)[index];\n}\n\nvoid loadScreen(enum ScreensEnum screenId) {\n    currentScreen = screenId - 1;\n    lv_obj_t *screen = getLvglObjectFromIndex(currentScreen);\n    lv_scr_load(screen);\n}\n\nvoid ui_init() {\n    create_screens();\n    loadScreen(SCREEN_ID_MAIN);\n}\n\nvoid ui_tick() {\n    tick_screen(currentScreen);\n}\n\n#endif\n"
         }
       ],
-      "destinationFolder": "..\\..\\FW\\AHU_exisotng\\FZM011-FwDev-AHU_TFT_ESP32S3\\main\\APP\\ui",
+      "destinationFolder": "..\\..\\FW\\TFT\\FZM011-FwDev-AHU_TFT_ESP32S3\\main\\APP\\ui",
       "separateFolderForImagesAndFonts": true,
       "imageExportMode": "source",
       "fontExportMode": "source",
@@ -910,8 +910,8 @@
           "type": "LVGLActionComponent",
           "left": 377,
           "top": 506,
-          "width": 335,
-          "height": 53,
+          "width": 336,
+          "height": 54,
           "customInputs": [],
           "customOutputs": [],
           "catchError": false,
@@ -937,8 +937,8 @@
           "type": "LVGLActionComponent",
           "left": 110,
           "top": 527,
-          "width": 335,
-          "height": 53,
+          "width": 336,
+          "height": 54,
           "customInputs": [],
           "customOutputs": [],
           "actions": [
@@ -1052,8 +1052,10 @@
               "userPropertyValues": {
                 "objID": "f64097cb-f255-4bfa-992a-3ebf04da857f",
                 "values": {
-                  "84ad1df4-09bb-4c4d-d9d9-2513738cf2b4": "",
-                  "ca29ed5f-4cb0-404e-a8fe-ffe7f7406c1a": ""
+                  "84ad1df4-09bb-4c4d-d9d9-2513738cf2b4": "inputParamName",
+                  "ca29ed5f-4cb0-404e-a8fe-ffe7f7406c1a": "inputParamLowerLimit",
+                  "7628a163-ea1d-492e-9a0e-3dd52f509c34": "inputParamUpperLimit",
+                  "9aa97d96-2a79-4580-a421-19172a98cba2": "inputParamValue"
                 }
               }
             }
@@ -1069,77 +1071,9 @@
             "objID": "a555d37e-e77c-4597-dcb6-cce1b04fb4e6"
           },
           "groupIndex": 0
-        },
-        {
-          "objID": "ffef0e3e-eba6-4c5d-d374-ea2a4e0b050b",
-          "type": "InputActionComponent",
-          "left": 346,
-          "top": 131,
-          "width": 125,
-          "height": 24,
-          "customInputs": [],
-          "customOutputs": [],
-          "name": "inputUpperLimit",
-          "inputType": "float"
-        },
-        {
-          "objID": "b5bf70ee-74dc-4c24-e3c4-e3a13b26a37e",
-          "type": "InputActionComponent",
-          "left": 346,
-          "top": 172,
-          "width": 126,
-          "height": 24,
-          "customInputs": [],
-          "customOutputs": [],
-          "name": "inputLowerLimit",
-          "inputType": "float"
-        },
-        {
-          "objID": "dba0e1be-e72b-4ce7-b4ec-fec69b643186",
-          "type": "InputActionComponent",
-          "left": 345,
-          "top": 216,
-          "width": 116,
-          "height": 24,
-          "customInputs": [],
-          "customOutputs": [],
-          "name": "inputEditValue",
-          "inputType": "float"
-        },
-        {
-          "objID": "69557a01-9381-493c-8775-cbc2d7ba54e1",
-          "type": "EndActionComponent",
-          "left": 385,
-          "top": 321,
-          "width": 87,
-          "height": 24,
-          "customInputs": [],
-          "customOutputs": []
         }
       ],
-      "connectionLines": [
-        {
-          "objID": "81a20bbb-c24d-4c10-e565-357c16818511",
-          "source": "dba0e1be-e72b-4ce7-b4ec-fec69b643186",
-          "output": "@seqout",
-          "target": "69557a01-9381-493c-8775-cbc2d7ba54e1",
-          "input": "@seqin"
-        },
-        {
-          "objID": "87df8c69-5fdb-4ebd-9687-64869a6c3cf9",
-          "source": "b5bf70ee-74dc-4c24-e3c4-e3a13b26a37e",
-          "output": "@seqout",
-          "target": "69557a01-9381-493c-8775-cbc2d7ba54e1",
-          "input": "@seqin"
-        },
-        {
-          "objID": "564ae1c8-4640-4ce6-bdc8-ee9ab4cdf082",
-          "source": "ffef0e3e-eba6-4c5d-d374-ea2a4e0b050b",
-          "output": "@seqout",
-          "target": "69557a01-9381-493c-8775-cbc2d7ba54e1",
-          "input": "@seqin"
-        }
-      ],
+      "connectionLines": [],
       "localVariables": [],
       "userProperties": [],
       "name": "EditParaPage",
@@ -1221,58 +1155,9 @@
                 "objID": "a249d09c-6aee-408d-ab4b-0d274a45f81d",
                 "values": {
                   "181ba5ad-1d31-42b5-c856-2786c457d900": "\"Alarm Low\"",
-                  "864dc8c3-8461-4c6d-ee16-156aaa6403e7": "channel_db.alarm_high",
-                  "650b1470-8069-40d2-dcd7-0286c5b7d97d": "channel_db.range_min",
-                  "3136fd47-bb1b-425f-a6e0-e0b2fad2d77e": "channel_db.alarm_low"
-                }
-              }
-            },
-            {
-              "objID": "dd9cca98-becb-4deb-d0c0-e8e28af2c910",
-              "type": "LVGLUserWidgetWidget",
-              "left": 0,
-              "top": 99,
-              "width": 272,
-              "height": 48,
-              "customInputs": [],
-              "customOutputs": [],
-              "style": {
-                "objID": "95d1a9fb-992a-4d76-92ee-45d4c2c078fa",
-                "useStyle": "default",
-                "conditionalStyles": [],
-                "childStyles": []
-              },
-              "timeline": [],
-              "eventHandlers": [],
-              "leftUnit": "px",
-              "topUnit": "px",
-              "widthUnit": "px",
-              "heightUnit": "px",
-              "children": [],
-              "widgetFlags": "CLICK_FOCUSABLE|GESTURE_BUBBLE|PRESS_LOCK|SCROLLABLE|SCROLL_CHAIN_HOR|SCROLL_CHAIN_VER|SCROLL_ELASTIC|SCROLL_MOMENTUM|SCROLL_WITH_ARROW|SNAPPABLE",
-              "hiddenFlagType": "literal",
-              "clickableFlag": true,
-              "clickableFlagType": "literal",
-              "flagScrollbarMode": "",
-              "flagScrollDirection": "",
-              "scrollSnapX": "",
-              "scrollSnapY": "",
-              "checkedStateType": "literal",
-              "disabledStateType": "literal",
-              "states": "",
-              "localStyles": {
-                "objID": "e5ff25e7-7714-4acd-aacf-fec6db818b52"
-              },
-              "group": "",
-              "groupIndex": 0,
-              "userWidgetPageName": "editUserParam",
-              "userPropertyValues": {
-                "objID": "c5d3cd3c-7d13-4c25-db43-896625f20ba6",
-                "values": {
-                  "181ba5ad-1d31-42b5-c856-2786c457d900": "\"Alarm High\"",
-                  "864dc8c3-8461-4c6d-ee16-156aaa6403e7": "channel_db.range_high",
-                  "650b1470-8069-40d2-dcd7-0286c5b7d97d": "channel_db.alarm_low",
-                  "3136fd47-bb1b-425f-a6e0-e0b2fad2d77e": "channel_db.alarm_high"
+                  "864dc8c3-8461-4c6d-ee16-156aaa6403e7": "50",
+                  "650b1470-8069-40d2-dcd7-0286c5b7d97d": "20",
+                  "3136fd47-bb1b-425f-a6e0-e0b2fad2d77e": "alarm_low"
                 }
               }
             }
@@ -1291,24 +1176,7 @@
         }
       ],
       "connectionLines": [],
-      "localVariables": [
-        {
-          "objID": "bb07a71e-e5fc-4935-a79b-8d271edd455f",
-          "name": "varEditParaName",
-          "type": "string",
-          "defaultValue": "\"Alarm Low\"",
-          "persistent": false,
-          "native": false
-        },
-        {
-          "objID": "c480a50c-7aca-41ef-a481-a351686420d7",
-          "name": "channel_db",
-          "type": "struct:channel_db_t",
-          "defaultValue": "null",
-          "persistent": false,
-          "native": false
-        }
-      ],
+      "localVariables": [],
       "userProperties": [],
       "name": "PressurePage",
       "left": 0,
@@ -1940,7 +1808,7 @@
           "left": 317,
           "top": 75,
           "width": 317,
-          "height": 53,
+          "height": 54,
           "customInputs": [],
           "customOutputs": [],
           "actions": [
@@ -2561,15 +2429,7 @@
                 "childStyles": []
               },
               "timeline": [],
-              "eventHandlers": [
-                {
-                  "objID": "cf9d89ff-8354-40d8-d051-8ac7707fd95c",
-                  "eventName": "PRESSED",
-                  "handlerType": "action",
-                  "action": "KeypadInputs",
-                  "userData": 0
-                }
-              ],
+              "eventHandlers": [],
               "identifier": "btnmx_NumericKeypad",
               "leftUnit": "px",
               "topUnit": "px",
@@ -2700,7 +2560,7 @@
               "type": "LVGLLabelWidget",
               "left": 0,
               "top": 0,
-              "width": 118,
+              "width": 140,
               "height": 16,
               "customInputs": [],
               "customOutputs": [],
@@ -2740,7 +2600,7 @@
               },
               "group": "",
               "groupIndex": 0,
-              "text": "varSettingPara",
+              "text": "inputParamName",
               "textType": "expression",
               "longMode": "WRAP",
               "recolor": false
@@ -2872,15 +2732,7 @@
                 "childStyles": []
               },
               "timeline": [],
-              "eventHandlers": [
-                {
-                  "objID": "4f170f33-8215-4c96-a48a-7e605e82bccf",
-                  "eventName": "PRESSED",
-                  "handlerType": "flow",
-                  "action": "KeypadSave",
-                  "userData": 0
-                }
-              ],
+              "eventHandlers": [],
               "identifier": "btn_Save",
               "leftUnit": "px",
               "topUnit": "px",
@@ -2984,8 +2836,8 @@
           "type": "LVGLActionComponent",
           "left": 58,
           "top": 486,
-          "width": 310,
-          "height": 53,
+          "width": 311,
+          "height": 54,
           "customInputs": [],
           "customOutputs": [],
           "actions": [
@@ -3000,27 +2852,6 @@
               "delayType": "literal"
             }
           ]
-        },
-        {
-          "objID": "cb150e65-2fdb-420e-90dc-a578ddd95abf",
-          "type": "CallActionActionComponent",
-          "left": 350,
-          "top": 411,
-          "width": 103,
-          "height": 52,
-          "customInputs": [],
-          "customOutputs": [
-            {
-              "objID": "682c75ab-abb2-4496-b05e-82ed2d228c9f",
-              "name": "varEditedValue",
-              "type": "float"
-            }
-          ],
-          "action": "KeypadSave",
-          "userPropertyValues": {
-            "objID": "1d4e4552-e343-4a64-b111-b9c9646eda7a",
-            "values": {}
-          }
         }
       ],
       "connectionLines": [
@@ -3030,49 +2861,14 @@
           "output": "PRESSED",
           "target": "7625f9a8-52a0-4e15-e73c-db7b008151c2",
           "input": "@seqin"
-        },
-        {
-          "objID": "ddb182d7-e788-48ee-9d73-a8eba8fcf3d4",
-          "source": "fc25db9f-5588-417f-eeb3-742ae9dcaaee",
-          "output": "PRESSED",
-          "target": "cb150e65-2fdb-420e-90dc-a578ddd95abf",
-          "input": "@seqin"
-        },
-        {
-          "objID": "bb41ca54-a9c8-4afe-c501-26cc027527e5",
-          "source": "cb150e65-2fdb-420e-90dc-a578ddd95abf",
-          "output": "varEditedValue",
-          "target": "7625f9a8-52a0-4e15-e73c-db7b008151c2",
-          "input": "@seqin"
         }
       ],
       "localVariables": [],
       "userProperties": [
         {
-          "id": "7628a163-ea1d-492e-9a0e-3dd52f509c34",
-          "objID": "f19917e4-1c98-42d1-a8a1-b022040970ef",
-          "name": "varUpperLimit",
-          "type": "float",
-          "assignable": false
-        },
-        {
-          "id": "ca29ed5f-4cb0-404e-a8fe-ffe7f7406c1a",
-          "objID": "4847d3f1-239b-4ec2-d0e6-e9d2e47e00ee",
-          "name": "varLowerLimit",
-          "type": "float",
-          "assignable": false
-        },
-        {
-          "id": "9aa97d96-2a79-4580-a421-19172a98cba2",
-          "objID": "24b1d22f-3ed5-42a3-d23a-de503c1b64ab",
-          "name": "varEditValue",
-          "type": "float",
-          "assignable": false
-        },
-        {
           "id": "84ad1df4-09bb-4c4d-d9d9-2513738cf2b4",
           "objID": "7d0e346b-424b-4167-fa3d-d99140c35ec7",
-          "name": "varSettingPara",
+          "name": "inputParamName",
           "type": "string",
           "assignable": false
         }
@@ -3227,7 +3023,7 @@
               "type": "LVGLLabelWidget",
               "left": 0,
               "top": 0,
-              "width": 129,
+              "width": 85,
               "height": 16,
               "customInputs": [],
               "customOutputs": [],
@@ -3270,7 +3066,8 @@
               "text": "editParamName",
               "textType": "expression",
               "longMode": "WRAP",
-              "recolor": false
+              "recolor": false,
+              "previewValue": "Analog Low"
             }
           ],
           "widgetFlags": "CLICK_FOCUSABLE|GESTURE_BUBBLE|PRESS_LOCK|SCROLL_CHAIN_HOR|SCROLL_CHAIN_VER|SCROLL_ELASTIC|SCROLL_MOMENTUM|SCROLL_WITH_ARROW|SNAPPABLE",
@@ -3293,30 +3090,15 @@
         {
           "objID": "85632be5-b342-4123-c7b6-552d9ff74189",
           "type": "LVGLActionComponent",
-          "left": 478,
-          "top": 131,
-          "width": 439,
-          "height": 108,
+          "left": 344,
+          "top": 143,
+          "width": 421,
+          "height": 54,
           "customInputs": [
             {
               "objID": "97051edb-bb20-467b-f356-2daede626d93",
               "name": "inputParamName",
               "type": "string"
-            },
-            {
-              "objID": "5f8c385b-81ab-4d73-c1b8-56a1d5f45aa8",
-              "name": "inputEditValue",
-              "type": "float"
-            },
-            {
-              "objID": "1c7542c6-3169-45a6-a115-05338b087cfb",
-              "name": "inputLowerLimit",
-              "type": "float"
-            },
-            {
-              "objID": "aa478ff1-4bed-4d83-d310-9a011dcfb294",
-              "name": "inputUpperLimit",
-              "type": "float"
             }
           ],
           "customOutputs": [],
@@ -3326,7 +3108,7 @@
               "action": "changeScreen",
               "screen": "EditParaPage",
               "screenType": "literal",
-              "fadeMode": "FADE_IN",
+              "fadeMode": "NONE",
               "fadeModeType": "literal",
               "speed": 200,
               "speedType": "literal",
@@ -3338,225 +3120,51 @@
           ]
         },
         {
-          "objID": "de5244af-75b6-4fcc-d2a0-c3b53b4d77ae",
-          "type": "SetVariableActionComponent",
-          "left": 17,
-          "top": 74,
-          "width": 313,
-          "height": 57,
-          "customInputs": [],
-          "customOutputs": [
-            {
-              "objID": "162bf630-82fa-4fff-f70d-0c21090980d7",
-              "name": "outputParamName",
-              "type": "float"
-            }
-          ],
-          "entries": [
-            {
-              "objID": "d39d4482-62b4-448a-a671-ef194a361205",
-              "variable": "paramName",
-              "value": "editParamName"
-            }
-          ]
-        },
-        {
-          "objID": "2772d6f9-c6fc-49cd-9ac9-6f7a82c386a5",
-          "type": "SetVariableActionComponent",
-          "left": 15,
-          "top": 147,
-          "width": 325,
-          "height": 57,
-          "customInputs": [],
-          "customOutputs": [
-            {
-              "objID": "70e6194a-1aa3-4922-e707-60d59af960cb",
-              "name": "outputParamName",
-              "type": "float"
-            }
-          ],
-          "entries": [
-            {
-              "objID": "f7023bb0-ba72-40d2-ef46-067b2e051ee2",
-              "variable": "paramValue",
-              "value": "editParamValue"
-            }
-          ]
-        },
-        {
-          "objID": "d9dd423a-795b-4cb9-8e57-81a72bcf95d6",
-          "type": "SetVariableActionComponent",
-          "left": 15,
-          "top": 220,
-          "width": 374,
-          "height": 57,
-          "customInputs": [],
-          "customOutputs": [
-            {
-              "objID": "9b5d842b-d7b9-48a2-b4c3-f37cc6bbfffe",
-              "name": "outputParamName",
-              "type": "float"
-            }
-          ],
-          "entries": [
-            {
-              "objID": "4b54203f-3df8-4240-9730-dfea5036a1d1",
-              "variable": "paramLowerLimit",
-              "value": "editParamLowLimit"
-            }
-          ]
-        },
-        {
-          "objID": "130d74c2-939c-43b9-deec-3a1c9a7ca8b5",
-          "type": "SetVariableActionComponent",
-          "left": 17,
-          "top": 294,
-          "width": 313,
-          "height": 57,
-          "customInputs": [],
-          "customOutputs": [
-            {
-              "objID": "8e1e4ba8-a264-48b1-8618-bb219f050680",
-              "name": "outputParamName",
-              "type": "float"
-            }
-          ],
-          "entries": [
-            {
-              "objID": "54b07bf5-0503-45c4-d727-c89300148260",
-              "variable": "paramName",
-              "value": "editParamName"
-            }
-          ]
-        },
-        {
-          "objID": "563c2c1e-16bd-424d-c338-fa0f1d203832",
-          "type": "InputActionComponent",
-          "left": 478,
-          "top": 39,
-          "width": 156,
-          "height": 24,
+          "objID": "d10815ef-f0de-4bc0-c59d-fb03012c8ebc",
+          "type": "EvalExprActionComponent",
+          "left": 158,
+          "top": 143,
+          "width": 139,
+          "height": 54,
           "customInputs": [],
           "customOutputs": [],
-          "name": "editParamLowerLimit",
-          "inputType": "float"
+          "expression": "editParamName"
         }
       ],
       "connectionLines": [
         {
-          "objID": "cc3de48c-d92d-4185-b494-4e2dbcf91416",
-          "source": "b2d9181c-2e06-4890-da1f-845477e02cb4",
-          "output": "PRESSED",
-          "target": "de5244af-75b6-4fcc-d2a0-c3b53b4d77ae",
-          "input": "@seqin"
-        },
-        {
-          "objID": "52f883bf-e395-433c-e72a-6a5ae11fdbf9",
-          "source": "de5244af-75b6-4fcc-d2a0-c3b53b4d77ae",
-          "output": "outputParamName",
+          "objID": "acdadbe8-5ec7-441b-99b8-998e65e5e478",
+          "source": "d10815ef-f0de-4bc0-c59d-fb03012c8ebc",
+          "output": "result",
           "target": "85632be5-b342-4123-c7b6-552d9ff74189",
           "input": "inputParamName"
         },
         {
-          "objID": "edca0d75-aabe-4fe1-8dfd-4bba14b43fdf",
-          "source": "2772d6f9-c6fc-49cd-9ac9-6f7a82c386a5",
-          "output": "outputParamName",
-          "target": "85632be5-b342-4123-c7b6-552d9ff74189",
-          "input": "inputEditValue"
-        },
-        {
-          "objID": "40e0c9a8-ff8b-4fb9-d587-2e7d688ae2c5",
+          "objID": "3eb312b5-9f94-4548-ea6e-38d0f59303df",
           "source": "b2d9181c-2e06-4890-da1f-845477e02cb4",
           "output": "PRESSED",
-          "target": "2772d6f9-c6fc-49cd-9ac9-6f7a82c386a5",
+          "target": "d10815ef-f0de-4bc0-c59d-fb03012c8ebc",
           "input": "@seqin"
         },
         {
-          "objID": "2ed751e7-9d6a-4380-ac2c-f0f57538c96d",
-          "source": "b2d9181c-2e06-4890-da1f-845477e02cb4",
-          "output": "PRESSED",
-          "target": "d9dd423a-795b-4cb9-8e57-81a72bcf95d6",
-          "input": "@seqin"
-        },
-        {
-          "objID": "893f54f3-2ac9-4612-ee66-9693438827e7",
-          "source": "b2d9181c-2e06-4890-da1f-845477e02cb4",
-          "output": "PRESSED",
-          "target": "130d74c2-939c-43b9-deec-3a1c9a7ca8b5",
-          "input": "@seqin"
-        },
-        {
-          "objID": "3bf309e3-069f-481d-d6a4-eaa3598bdd90",
-          "source": "563c2c1e-16bd-424d-c338-fa0f1d203832",
+          "objID": "b2e739da-662a-4071-96cc-c7b891e10a85",
+          "source": "d10815ef-f0de-4bc0-c59d-fb03012c8ebc",
           "output": "@seqout",
           "target": "85632be5-b342-4123-c7b6-552d9ff74189",
-          "input": "inputLowerLimit"
+          "input": "@seqin"
         }
       ],
       "localVariables": [
         {
-          "objID": "73193ccd-8381-44d6-c460-610f9223dc1d",
-          "name": "paramName",
-          "type": "string",
-          "defaultValue": "\"Title\"",
-          "persistent": false,
-          "native": false
-        },
-        {
-          "objID": "a2b1088c-5376-4cf5-cbfb-3e9d2647086b",
-          "name": "paramValue",
-          "type": "float",
-          "defaultValue": "0",
-          "persistent": false,
-          "native": false
-        },
-        {
-          "objID": "b70539f8-e07a-4f98-8a6e-efbb35c1342b",
-          "name": "paramUpperLimit",
-          "type": "float",
-          "defaultValue": "0",
-          "persistent": false,
-          "native": false
-        },
-        {
-          "objID": "cde67bb5-1ee2-4d1b-9e01-bf9c3ca855e8",
-          "name": "paramLowerLimit",
-          "type": "float",
-          "defaultValue": "0",
-          "persistent": false,
-          "native": false
-        }
-      ],
-      "userProperties": [
-        {
-          "id": "864dc8c3-8461-4c6d-ee16-156aaa6403e7",
-          "objID": "6bad46a7-1034-471a-d956-3ffa035048ec",
-          "name": "editParamHighLimit",
-          "type": "float",
-          "assignable": false
-        },
-        {
-          "id": "650b1470-8069-40d2-dcd7-0286c5b7d97d",
-          "objID": "856bd353-f647-480d-d676-ab5f1fd57f71",
-          "name": "editParamLowLimit",
-          "type": "float",
-          "assignable": false
-        },
-        {
-          "id": "3136fd47-bb1b-425f-a6e0-e0b2fad2d77e",
-          "objID": "be2fad95-887d-48a0-adc9-087b488786e0",
-          "name": "editParamValue",
-          "type": "float",
-          "assignable": false
-        },
-        {
-          "id": "181ba5ad-1d31-42b5-c856-2786c457d900",
-          "objID": "e6e934ca-2072-49f6-ff89-23fa55630001",
+          "objID": "9cc732c2-7cc1-4f84-da47-4176a6753cc1",
           "name": "editParamName",
           "type": "string",
-          "assignable": false
+          "defaultValue": "\"Nasreen\"",
+          "persistent": false,
+          "native": false
         }
       ],
+      "userProperties": [],
       "name": "editUserParam",
       "left": 0,
       "top": 0,
