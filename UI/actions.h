@@ -1,0 +1,21 @@
+#ifndef EEZ_LVGL_UI_EVENTS_H
+#define EEZ_LVGL_UI_EVENTS_H
+
+#include <lvgl.h>
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern void action_keypad_inputs(lv_event_t * e);
+extern void action_keypad_backspace(lv_event_t * e);
+extern void action_keypad_save(lv_event_t * e);
+extern void action_switch_to_prev_page(lv_event_t * e);
+extern void action_channel_settings_btn(lv_event_t * e);
+
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif /*EEZ_LVGL_UI_EVENTS_H*/
