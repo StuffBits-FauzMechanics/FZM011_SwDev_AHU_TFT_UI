@@ -1,6 +1,6 @@
 {
   "navigation": {
-    "selectedUserPageObject": "[AHU_ui_demo.eez-project]:/userPages/2",
+    "selectedUserPageObject": "[AHU_ui_demo.eez-project]:/userPages/5",
     "subnavigationSelectedItems": {}
   },
   "layoutModel": {
@@ -156,8 +156,7 @@
                       "enableClose": false,
                       "icon": "material:code"
                     }
-                  ],
-                  "active": true
+                  ]
                 },
                 {
                   "type": "tabset",
@@ -197,17 +196,95 @@
               "type": "tabset",
               "id": "EDITORS",
               "weight": 31.16747953874298,
+              "selected": 2,
               "enableDeleteWhenEmpty": false,
               "enableClose": false,
               "children": [
                 {
                   "type": "tab",
-                  "id": "#bcd03806-59e1-423e-82eb-bf43f7e02ea3",
-                  "name": "CalibrationPage",
+                  "id": "#b8736dbe-ccc2-4aeb-8589-5ba404381d26",
+                  "name": "SettingsPage",
                   "component": "editor",
                   "config": {
-                    "objectPath": "[AHU_ui_demo.eez-project]:/userPages/2",
+                    "objectPath": "[AHU_ui_demo.eez-project]:/userPages/1",
                     "permanent": false
+                  },
+                  "icon": "svg:page"
+                },
+                {
+                  "type": "tab",
+                  "id": "#c3d1cafb-303c-411d-ac68-ff9756506b82",
+                  "name": "PressureSettingsPage",
+                  "component": "editor",
+                  "config": {
+                    "objectPath": "[AHU_ui_demo.eez-project]:/userPages/3",
+                    "permanent": true
+                  },
+                  "icon": "svg:page"
+                },
+                {
+                  "type": "tab",
+                  "id": "#5029c296-7cbe-465f-92de-9cbf8cabbb05",
+                  "name": "othersSettingsPage",
+                  "component": "editor",
+                  "config": {
+                    "objectPath": "[AHU_ui_demo.eez-project]:/userPages/5",
+                    "permanent": true
+                  },
+                  "icon": "svg:page"
+                },
+                {
+                  "type": "tab",
+                  "id": "#f4489df7-5e4f-4c7d-9539-67cbdc37cd1d",
+                  "name": "passwordPage",
+                  "component": "editor",
+                  "config": {
+                    "objectPath": "[AHU_ui_demo.eez-project]:/userPages/6",
+                    "permanent": true
+                  },
+                  "icon": "svg:page"
+                },
+                {
+                  "type": "tab",
+                  "id": "#4cdba5a6-6d89-4fa1-8fb4-8299300abe20",
+                  "name": "editParaPage",
+                  "component": "editor",
+                  "config": {
+                    "objectPath": "[AHU_ui_demo.eez-project]:/userPages/7",
+                    "permanent": true
+                  },
+                  "icon": "svg:page"
+                },
+                {
+                  "type": "tab",
+                  "id": "#4127ecc0-6aee-475d-a736-21005a666c07",
+                  "name": "editDatePage",
+                  "component": "editor",
+                  "config": {
+                    "objectPath": "[AHU_ui_demo.eez-project]:/userPages/8",
+                    "permanent": true
+                  },
+                  "icon": "svg:page"
+                },
+                {
+                  "type": "tab",
+                  "id": "#aa299f5b-709d-413f-af11-7baeaff92b8a",
+                  "name": "Remote Page",
+                  "component": "editor",
+                  "config": {
+                    "objectPath": "[AHU_ui_demo.eez-project]:/userPages/10",
+                    "permanent": true
+                  },
+                  "icon": "svg:page"
+                },
+                {
+                  "type": "tab",
+                  "id": "#bcd03806-59e1-423e-82eb-bf43f7e02ea3",
+                  "name": "editTimePage",
+                  "component": "editor",
+                  "config": {
+                    "objectPath": "[AHU_ui_demo.eez-project]:/userPages/9",
+                    "permanent": true
                   },
                   "icon": "svg:page"
                 },
@@ -245,7 +322,8 @@
                     "_owner": null
                   }
                 }
-              ]
+              ],
+              "active": true
             },
             {
               "type": "row",
@@ -1061,9 +1139,7 @@
     "[AHU_ui_demo.eez-project]:/userPages/9[flow-state]": {
       "selection": {
         "0": {
-          "6": {
-            "$selected": true
-          }
+          "6": {}
         }
       },
       "transform": {
@@ -1071,7 +1147,7 @@
           "x": -136,
           "y": -240
         },
-        "scale": 0.75
+        "scale": 1
       },
       "timeline": {
         "isEditorActive": false,
@@ -1119,7 +1195,7 @@
           "x": -126.66668701171875,
           "y": -184.66665649414062
         },
-        "scale": 0.8
+        "scale": 1
       },
       "timeline": {
         "isEditorActive": false,
@@ -1172,7 +1248,7 @@
           "x": -115.33331298828125,
           "y": -200.66668701171875
         },
-        "scale": 0.8
+        "scale": 1
       },
       "timeline": {
         "isEditorActive": false,
@@ -1208,7 +1284,7 @@
           "x": -129.33331298828125,
           "y": -156.66668701171875
         },
-        "scale": 0.75
+        "scale": 1
       },
       "timeline": {
         "isEditorActive": false,
@@ -1263,9 +1339,9 @@
       "transform": {
         "translate": {
           "x": -136,
-          "y": -140
+          "y": -340
         },
-        "scale": 0.75
+        "scale": 1
       },
       "timeline": {
         "isEditorActive": false,
@@ -1281,7 +1357,7 @@
           "x": -136,
           "y": -240
         },
-        "scale": 0.75
+        "scale": 1
       },
       "timeline": {
         "isEditorActive": false,

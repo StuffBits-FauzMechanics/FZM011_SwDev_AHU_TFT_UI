@@ -14,6 +14,10 @@ extern const lv_img_dsc_t img_cancel;
 extern const lv_img_dsc_t img_pressure_gauge1;
 extern const lv_img_dsc_t img_settings;
 extern const lv_img_dsc_t img_home;
+extern const lv_img_dsc_t img_settings_80;
+extern const lv_img_dsc_t img_reset_pswd_80;
+extern const lv_img_dsc_t img_pressure_80;
+extern const lv_img_dsc_t img_date_time_80;
 
 #ifndef EXT_IMG_DESC_T
 #define EXT_IMG_DESC_T
@@ -23,7 +27,7 @@ typedef struct _ext_img_desc_t {
 } ext_img_desc_t;
 #endif
 
-extern const ext_img_desc_t images[7];
+extern const ext_img_desc_t images[11];
 
 
 #ifdef __cplusplus

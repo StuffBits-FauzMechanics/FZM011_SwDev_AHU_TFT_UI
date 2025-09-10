@@ -88,16 +88,13 @@ typedef struct _objects_t {
     lv_obj_t *obj9__btn_cancel;
     lv_obj_t *obj10;
     lv_obj_t *obj10__obj0;
-    lv_obj_t *obj10__obj1;
     lv_obj_t *obj11;
     lv_obj_t *obj11__obj0;
-    lv_obj_t *obj11__obj1;
     lv_obj_t *obj12;
     lv_obj_t *obj12__obj0;
-    lv_obj_t *obj12__obj1;
     lv_obj_t *obj13;
+    lv_obj_t *obj13__obj1;
     lv_obj_t *obj13__obj2;
-    lv_obj_t *obj13__obj3;
 } objects_t;
 
 extern objects_t objects;
