@@ -14,6 +14,7 @@ typedef struct _objects_t {
     lv_obj_t *edit_para_page;
     lv_obj_t *pressure_page;
     lv_obj_t *settings_page;
+    lv_obj_t *button_settings;
     lv_obj_t *panel_channel_1;
     lv_obj_t *panel_channel_1__panel_channel;
     lv_obj_t *panel_channel_1__label_chan_alarm_lo_val;
@@ -46,7 +47,6 @@ typedef struct _objects_t {
     lv_obj_t *label_button_unlock;
     lv_obj_t *button_alarm;
     lv_obj_t *label_button_alarm;
-    lv_obj_t *button_settings;
     lv_obj_t *label_button_settings;
     lv_obj_t *obj1;
     lv_obj_t *obj1__rtc_panel_1;
@@ -92,9 +92,6 @@ typedef struct _objects_t {
     lv_obj_t *obj11__obj0;
     lv_obj_t *obj12;
     lv_obj_t *obj12__obj0;
-    lv_obj_t *obj13;
-    lv_obj_t *obj13__obj1;
-    lv_obj_t *obj13__obj2;
 } objects_t;
 
 extern objects_t objects;

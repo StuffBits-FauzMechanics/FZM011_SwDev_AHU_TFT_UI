@@ -1,9 +1,12 @@
 {
   "navigation": {
-    "selectedUserPageObject": "[AHU_UI.eez-project]:/userPages/3",
-    "selectedUserWidgetObject": "[AHU_UI.eez-project]:/userWidgets/4",
+    "selectedUserPageObject": "[AHU_UI.eez-project]:/userPages/0",
+    "selectedUserWidgetObject": "[AHU_UI.eez-project]:/userWidgets/1",
+    "selectedGlobalVariableObject": "[AHU_UI.eez-project]:/variables/globalVariables/0",
     "selectedBitmapObject": "[AHU_UI.eez-project]:/bitmaps/10",
-    "subnavigationSelectedItems": {}
+    "subnavigationSelectedItems": {
+      "variables-tab/sub-navigation/selected-item": "Global"
+    }
   },
   "layoutModel": {
     "rootEditor": {
@@ -71,6 +74,7 @@
           },
           {
             "type": "border",
+            "selected": 0,
             "location": "bottom",
             "children": [
               {
@@ -126,13 +130,12 @@
             {
               "type": "row",
               "id": "#323e48c7-cf56-4759-9139-d6a585b0c5f5",
-              "weight": 15,
+              "weight": 23.16649642492339,
               "children": [
                 {
                   "type": "tabset",
                   "id": "#c6c944d4-4110-4832-bfa8-1d29b4836043",
                   "weight": 1,
-                  "selected": 1,
                   "enableClose": false,
                   "children": [
                     {
@@ -198,18 +201,30 @@
             {
               "type": "tabset",
               "id": "EDITORS",
-              "weight": 65,
-              "selected": 3,
+              "weight": 43.980839373379844,
+              "selected": 5,
               "enableDeleteWhenEmpty": false,
               "enableClose": false,
               "children": [
                 {
                   "type": "tab",
-                  "id": "#00bb0e50-1977-4844-a20d-17fd7c5ec997",
-                  "name": "ChanButton",
+                  "id": "#7c231447-f6f9-4016-95bc-d730beedca85",
+                  "name": "Settings",
                   "component": "editor",
                   "config": {
-                    "objectPath": "[AHU_UI.eez-project]:/userWidgets/4",
+                    "objectPath": "[AHU_UI.eez-project]:/settings",
+                    "subObjectPath": "[AHU_UI.eez-project]:/settings",
+                    "permanent": false
+                  },
+                  "icon": "material:settings"
+                },
+                {
+                  "type": "tab",
+                  "id": "#00bb0e50-1977-4844-a20d-17fd7c5ec997",
+                  "name": "editUserParam",
+                  "component": "editor",
+                  "config": {
+                    "objectPath": "[AHU_UI.eez-project]:/userWidgets/1",
                     "permanent": false
                   },
                   "icon": "svg:user_widget"
@@ -298,7 +313,7 @@
             {
               "type": "row",
               "id": "#be169829-a649-4c67-a153-8d8edff1c395",
-              "weight": 20,
+              "weight": 32.852664201696754,
               "children": [
                 {
                   "type": "tabset",
@@ -1069,13 +1084,19 @@
   "features": {},
   "objects": {
     "[AHU_UI.eez-project]:/userPages/0[flow-state]": {
-      "selection": {},
+      "selection": {
+        "0": {
+          "3": {
+            "2": {}
+          }
+        }
+      },
       "transform": {
         "translate": {
           "x": -136,
           "y": -240
         },
-        "scale": 1.25
+        "scale": 0.8
       },
       "timeline": {
         "isEditorActive": false,
@@ -1090,10 +1111,10 @@
       },
       "transform": {
         "translate": {
-          "x": -136,
-          "y": -240
+          "x": -12.520000000000039,
+          "y": -265.0017538452148
         },
-        "scale": 1.25
+        "scale": 0.8
       },
       "timeline": {
         "isEditorActive": false,
@@ -1109,7 +1130,7 @@
           "x": -136,
           "y": -240
         },
-        "scale": 1.25
+        "scale": 0.8
       },
       "timeline": {
         "isEditorActive": false,
@@ -1125,7 +1146,7 @@
           "x": -136,
           "y": -240
         },
-        "scale": 1.25
+        "scale": 0.8
       },
       "timeline": {
         "isEditorActive": false,
@@ -1143,7 +1164,23 @@
           "x": -90.51785714285711,
           "y": 111.3809523809524
         },
-        "scale": 1.25
+        "scale": 0.8
+      },
+      "timeline": {
+        "isEditorActive": false,
+        "position": 0,
+        "secondToPx": 200,
+        "scrollLeft": 0
+      }
+    },
+    "[AHU_UI.eez-project]:/userWidgets/1[flow-state]": {
+      "selection": {},
+      "transform": {
+        "translate": {
+          "x": -136,
+          "y": -25
+        },
+        "scale": 0.8
       },
       "timeline": {
         "isEditorActive": false,
@@ -1172,6 +1209,6 @@
   ],
   "showInactiveFlowsInDebugger": true,
   "globalFlowZoom": true,
-  "flowZoom": 1.25,
+  "flowZoom": 0.8,
   "implementationLanguage": "C"
 }

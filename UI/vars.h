@@ -16,11 +16,13 @@ extern "C" {
 // Flow global variables
 
 enum FlowGlobalVariables {
-    FLOW_GLOBAL_VARIABLE_NONE
+    FLOW_GLOBAL_VARIABLE_ISBUTTON_ENABLED = 0
 };
 
 // Native global variables
 
+extern bool get_var_isbutton_enabled();
+extern void set_var_isbutton_enabled(bool value);
 
 
 #ifdef __cplusplus

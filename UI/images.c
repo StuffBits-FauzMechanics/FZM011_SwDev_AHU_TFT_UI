@@ -8,8 +8,8 @@ const ext_img_desc_t images[11] = {
     { "pressureGauge1", &img_pressure_gauge1 },
     { "settings", &img_settings },
     { "home", &img_home },
-    { "settings_80", &img_settings_80 },
     { "reset_pswd_80", &img_reset_pswd_80 },
     { "pressure_80", &img_pressure_80 },
     { "date_time_80", &img_date_time_80 },
+    { "settings_80", &img_settings_80 },
 };
