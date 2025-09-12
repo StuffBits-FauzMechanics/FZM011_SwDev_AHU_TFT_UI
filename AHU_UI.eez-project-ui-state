@@ -1,7 +1,7 @@
 {
   "navigation": {
-    "selectedUserPageObject": "[AHU_UI.eez-project]:/userPages/0",
-    "selectedUserWidgetObject": "[AHU_UI.eez-project]:/userWidgets/1",
+    "selectedUserPageObject": "[AHU_UI.eez-project]:/userPages/3",
+    "selectedUserWidgetObject": "[AHU_UI.eez-project]:/userWidgets/7",
     "selectedGlobalVariableObject": "[AHU_UI.eez-project]:/variables/globalVariables/0",
     "selectedBitmapObject": "[AHU_UI.eez-project]:/bitmaps/10",
     "subnavigationSelectedItems": {
@@ -75,6 +75,7 @@
           {
             "type": "border",
             "selected": 0,
+            "size": 73.09375,
             "location": "bottom",
             "children": [
               {
@@ -136,6 +137,7 @@
                   "type": "tabset",
                   "id": "#c6c944d4-4110-4832-bfa8-1d29b4836043",
                   "weight": 1,
+                  "selected": 1,
                   "enableClose": false,
                   "children": [
                     {
@@ -167,7 +169,7 @@
                 {
                   "type": "tabset",
                   "id": "#d064f16f-9ebf-417e-b6a7-7b762de89a2a",
-                  "weight": 1,
+                  "weight": 1.343915343915344,
                   "enableClose": false,
                   "children": [
                     {
@@ -183,7 +185,7 @@
                 {
                   "type": "tabset",
                   "id": "#aa797369-f222-48eb-9e4f-c94933fcc6e3",
-                  "weight": 1,
+                  "weight": 0.656084656084656,
                   "enableClose": false,
                   "children": [
                     {
@@ -202,10 +204,31 @@
               "type": "tabset",
               "id": "EDITORS",
               "weight": 43.980839373379844,
-              "selected": 5,
               "enableDeleteWhenEmpty": false,
               "enableClose": false,
               "children": [
+                {
+                  "type": "tab",
+                  "id": "#1179b542-41ae-4d29-9066-75688a4a7a57",
+                  "name": "datetime",
+                  "component": "editor",
+                  "config": {
+                    "objectPath": "[AHU_UI.eez-project]:/userWidgets/7",
+                    "permanent": false
+                  },
+                  "icon": "svg:user_widget"
+                },
+                {
+                  "type": "tab",
+                  "id": "#c14c65de-1a77-42e1-8070-b3230d849381",
+                  "name": "SettingsPage",
+                  "component": "editor",
+                  "config": {
+                    "objectPath": "[AHU_UI.eez-project]:/userPages/3",
+                    "permanent": false
+                  },
+                  "icon": "svg:page"
+                },
                 {
                   "type": "tab",
                   "id": "#7c231447-f6f9-4016-95bc-d730beedca85",
@@ -217,95 +240,6 @@
                     "permanent": false
                   },
                   "icon": "material:settings"
-                },
-                {
-                  "type": "tab",
-                  "id": "#00bb0e50-1977-4844-a20d-17fd7c5ec997",
-                  "name": "editUserParam",
-                  "component": "editor",
-                  "config": {
-                    "objectPath": "[AHU_UI.eez-project]:/userWidgets/1",
-                    "permanent": false
-                  },
-                  "icon": "svg:user_widget"
-                },
-                {
-                  "type": "tab",
-                  "id": "#80c6bf01-362f-4c65-8945-d1b57d37002f",
-                  "name": "EditParaPage",
-                  "component": "editor",
-                  "config": {
-                    "objectPath": "[AHU_UI.eez-project]:/userPages/1",
-                    "permanent": true
-                  },
-                  "icon": "svg:page"
-                },
-                {
-                  "type": "tab",
-                  "id": "#cfa646d5-5d13-412c-83c3-0f0d124cf487",
-                  "name": "PressurePage",
-                  "component": "editor",
-                  "config": {
-                    "objectPath": "[AHU_UI.eez-project]:/userPages/2",
-                    "permanent": true
-                  },
-                  "icon": "svg:page"
-                },
-                {
-                  "type": "tab",
-                  "id": "#f8b3a2bd-e17e-4f38-985c-c3b7a7bb1fad",
-                  "name": "SettingsPage",
-                  "component": "editor",
-                  "config": {
-                    "objectPath": "[AHU_UI.eez-project]:/userPages/3",
-                    "permanent": true
-                  },
-                  "icon": "svg:page"
-                },
-                {
-                  "type": "tab",
-                  "id": "#72af9dea-2105-4108-bf3c-9cadd684fe08",
-                  "name": "Main",
-                  "component": "editor",
-                  "config": {
-                    "objectPath": "[AHU_UI.eez-project]:/userPages/0",
-                    "permanent": true
-                  },
-                  "icon": "svg:page"
-                },
-                {
-                  "type": "tab",
-                  "id": "#5fd0a637-4a69-4177-85a0-6c6af52da916",
-                  "name": "Readme",
-                  "component": "editor",
-                  "config": {
-                    "objectPath": "[AHU_UI.eez-project]:/readme",
-                    "permanent": false
-                  },
-                  "icon": {
-                    "type": "svg",
-                    "key": null,
-                    "ref": null,
-                    "props": {
-                      "width": "24",
-                      "height": "24",
-                      "fill": "none",
-                      "viewBox": "0 0 24 24",
-                      "children": {
-                        "type": "path",
-                        "key": null,
-                        "ref": null,
-                        "props": {
-                          "clipRule": "evenodd",
-                          "d": "M4 5.5h5c1.1046 0 2 .8954 2 2v9c0 .5523-.4477 1-1 1H4c-.5523 0-1-.4477-1-1v-10c0-.5523.4477-1 1-1Zm10 14a2.9967 2.9967 0 0 1-1-.1707V19.5c0 .5523-.4477 1-1 1s-1-.4477-1-1v-.1707a2.9967 2.9967 0 0 1-1 .1707H4c-1.6568 0-3-1.3431-3-3v-10c0-1.6569 1.3432-3 3-3h5c1.1947 0 2.2671.5238 3 1.3542.7329-.8304 1.8053-1.3542 3-1.3542h5c1.6569 0 3 1.3431 3 3v10c0 1.6569-1.3431 3-3 3h-6Zm-1-12v9c0 .5523.4477 1 1 1h6c.5523 0 1-.4477 1-1v-10c0-.5523-.4477-1-1-1h-5c-1.1046 0-2 .8954-2 2Zm-8 0h4v2H5v-2Zm10 0h4v2h-4v-2Zm4 3h-4v2h4v-2Zm-14 0h4v2H5v-2Zm14 3h-4v2h4v-2Zm-14 0h4v2H5v-2Z",
-                          "fill": "currentColor",
-                          "fillRule": "evenodd"
-                        },
-                        "_owner": null
-                      }
-                    },
-                    "_owner": null
-                  }
                 }
               ],
               "active": true
@@ -318,7 +252,7 @@
                 {
                   "type": "tabset",
                   "id": "#5630c0fc-9dd5-4754-acb3-92733ec041ed",
-                  "weight": 2,
+                  "weight": 1.8146853146853146,
                   "children": [
                     {
                       "type": "tab",
@@ -333,7 +267,7 @@
                 {
                   "type": "tabset",
                   "id": "#9deefd4b-6f84-438e-a888-12102a920e61",
-                  "weight": 1,
+                  "weight": 1.1853146853146854,
                   "children": [
                     {
                       "type": "tab",
@@ -1096,7 +1030,7 @@
           "x": -136,
           "y": -240
         },
-        "scale": 0.8
+        "scale": 0.75
       },
       "timeline": {
         "isEditorActive": false,
@@ -1114,7 +1048,7 @@
           "x": -12.520000000000039,
           "y": -265.0017538452148
         },
-        "scale": 0.8
+        "scale": 0.75
       },
       "timeline": {
         "isEditorActive": false,
@@ -1130,7 +1064,7 @@
           "x": -136,
           "y": -240
         },
-        "scale": 0.8
+        "scale": 0.75
       },
       "timeline": {
         "isEditorActive": false,
@@ -1146,7 +1080,7 @@
           "x": -136,
           "y": -240
         },
-        "scale": 0.8
+        "scale": 0.75
       },
       "timeline": {
         "isEditorActive": false,
@@ -1188,6 +1122,65 @@
         "secondToPx": 200,
         "scrollLeft": 0
       }
+    },
+    "[AHU_UI.eez-project]:/userWidgets/6[flow-state]": {
+      "selection": {
+        "0": {
+          "0": {
+            "$selected": true
+          }
+        }
+      },
+      "transform": {
+        "translate": {
+          "x": -136,
+          "y": 75
+        },
+        "scale": 0.75
+      },
+      "timeline": {
+        "isEditorActive": false,
+        "position": 0,
+        "secondToPx": 200,
+        "scrollLeft": 0
+      }
+    },
+    "[AHU_UI.eez-project]:/userPages/4[flow-state]": {
+      "selection": {
+        "0": {
+          "2": {},
+          "3": {}
+        }
+      },
+      "transform": {
+        "translate": {
+          "x": -102.28222222222225,
+          "y": -228.90555565728096
+        },
+        "scale": 0.75
+      },
+      "timeline": {
+        "isEditorActive": false,
+        "position": 0,
+        "secondToPx": 200,
+        "scrollLeft": 0
+      }
+    },
+    "[AHU_UI.eez-project]:/userWidgets/7[flow-state]": {
+      "selection": {},
+      "transform": {
+        "translate": {
+          "x": -74.5285864242098,
+          "y": -182.82062667879185
+        },
+        "scale": 0.75
+      },
+      "timeline": {
+        "isEditorActive": false,
+        "position": 0,
+        "secondToPx": 200,
+        "scrollLeft": 0
+      }
     }
   },
   "activeOutputSection": 0,
@@ -1205,10 +1198,13 @@
   "lvglState": "DEFAULT",
   "lvglExpandedPropertiesGroup": [
     "TEXT",
-    "POSITION AND SIZE"
+    "POSITION AND SIZE",
+    "BORDER",
+    "BACKGROUND",
+    "PADDING"
   ],
   "showInactiveFlowsInDebugger": true,
   "globalFlowZoom": true,
-  "flowZoom": 0.8,
+  "flowZoom": 0.75,
   "implementationLanguage": "C"
 }
