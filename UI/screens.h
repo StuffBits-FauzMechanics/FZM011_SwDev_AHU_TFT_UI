@@ -14,6 +14,8 @@ typedef struct _objects_t {
     lv_obj_t *edit_para_page;
     lv_obj_t *pressure_page;
     lv_obj_t *settings_page;
+    lv_obj_t *date_time_screen;
+    lv_obj_t *date_time;
     lv_obj_t *button_settings;
     lv_obj_t *panel_channel_1;
     lv_obj_t *panel_channel_1__panel_channel;
@@ -92,6 +94,50 @@ typedef struct _objects_t {
     lv_obj_t *obj11__obj0;
     lv_obj_t *obj12;
     lv_obj_t *obj12__obj0;
+    lv_obj_t *obj13;
+    lv_obj_t *obj13__title_panel;
+    lv_obj_t *obj13__btn_cancel_1;
+    lv_obj_t *obj13__lbl_para_name_2;
+    lv_obj_t *obj13__btn_cancel;
+    lv_obj_t *date_panel;
+    lv_obj_t *obj14;
+    lv_obj_t *obj14__obj3;
+    lv_obj_t *obj14__lbl_para_name_1;
+    lv_obj_t *obj15;
+    lv_obj_t *obj15__obj3;
+    lv_obj_t *obj15__lbl_para_name_1;
+    lv_obj_t *obj16;
+    lv_obj_t *obj16__obj3;
+    lv_obj_t *obj16__lbl_para_name_1;
+    lv_obj_t *date_panel_1;
+    lv_obj_t *obj17;
+    lv_obj_t *obj17__obj3;
+    lv_obj_t *obj17__lbl_para_name_1;
+    lv_obj_t *obj18;
+    lv_obj_t *obj18__obj3;
+    lv_obj_t *obj18__lbl_para_name_1;
+    lv_obj_t *obj19;
+    lv_obj_t *obj19__obj3;
+    lv_obj_t *obj19__lbl_para_name_1;
+    lv_obj_t *obj20;
+    lv_obj_t *obj20__title_panel;
+    lv_obj_t *obj20__btn_cancel_1;
+    lv_obj_t *obj20__lbl_para_name_2;
+    lv_obj_t *obj20__btn_cancel;
+    lv_obj_t *time1_panel;
+    lv_obj_t *day_1;
+    lv_obj_t *day_1__obj4;
+    lv_obj_t *month_1;
+    lv_obj_t *month_1__obj4;
+    lv_obj_t *year_1;
+    lv_obj_t *year_1__obj4;
+    lv_obj_t *date1_panel;
+    lv_obj_t *day;
+    lv_obj_t *day__obj4;
+    lv_obj_t *month;
+    lv_obj_t *month__obj4;
+    lv_obj_t *year;
+    lv_obj_t *year__obj4;
 } objects_t;
 
 extern objects_t objects;
@@ -101,6 +147,8 @@ enum ScreensEnum {
     SCREEN_ID_EDIT_PARA_PAGE = 2,
     SCREEN_ID_PRESSURE_PAGE = 3,
     SCREEN_ID_SETTINGS_PAGE = 4,
+    SCREEN_ID_DATE_TIME_SCREEN = 5,
+    SCREEN_ID_DATE_TIME = 6,
 };
 
 void create_screen_main();
@@ -114,6 +162,12 @@ void tick_screen_pressure_page();
 
 void create_screen_settings_page();
 void tick_screen_settings_page();
+
+void create_screen_date_time_screen();
+void tick_screen_date_time_screen();
+
+void create_screen_date_time();
+void tick_screen_date_time();
 
 void create_user_widget_panel_channel(lv_obj_t *parent_obj, int startWidgetIndex);
 void tick_user_widget_panel_channel(int startWidgetIndex);
@@ -135,6 +189,9 @@ void tick_user_widget_settings_button(int startWidgetIndex);
 
 void create_user_widget_edit_dropdown(lv_obj_t *parent_obj, int startWidgetIndex);
 void tick_user_widget_edit_dropdown(int startWidgetIndex);
+
+void create_user_widget_datetime(lv_obj_t *parent_obj, int startWidgetIndex);
+void tick_user_widget_datetime(int startWidgetIndex);
 
 void tick_screen_by_id(enum ScreensEnum screenId);
 void tick_screen(int screen_index);
